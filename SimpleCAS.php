@@ -72,7 +72,7 @@ class SimpleCAS
     {
         $this->server = $server;
         
-        if ($this->server instanceof SingleSignOut
+        if ($this->server instanceof SimpleCAS_SingleSignOut
             && isset($_POST)) {
             if ($ticket = $this->server->validateLogoutRequest($_POST)) {
                 $this->logout($ticket);
