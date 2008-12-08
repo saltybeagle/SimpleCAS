@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.8.0alpha1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+ <name>SimpleCAS</name>
+ <channel>simplecas.googlecode.com/svn</channel>
+ <summary>A PHP5 library for CAS Authentication.</summary>
+ <description>This package is a PHP5 only library for identifying users
+in a JA-SIG CAS secured environment.</description>
+ <lead>
+  <name>Brett Bieber</name>
+  <user>saltybeagle</user>
+  <email>brett.bieber@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-12-08</date>
+ <time>11:46:17</time>
+ <version>
+  <release>0.0.1</release>
+  <api>0.0.1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+ <notes>
+First Release.
+ </notes>
+ <contents>
+  <dir baseinstalldir="/" name="/">
+   <dir name="docs">
+    <dir name="examples">
+     <file name="simple.php" role="doc" />
+    </dir> <!-- /docs/examples -->
+   </dir> <!-- /docs -->
+   <dir name="SimpleCAS">
+    <dir name="ProxyGranting">
+     <dir name="Storage">
+      <file name="File.php" role="php" />
+     </dir> <!-- /SimpleCAS/ProxyGranting/Storage -->
+     <file name="Storage.php" role="php" />
+    </dir> <!-- /SimpleCAS/ProxyGranting -->
+    <dir name="Server">
+     <dir name="Version2">
+      <file name="ValidationResponse.php" role="php" />
+     </dir> <!-- /SimpleCAS/Server/Version2 -->
+     <file name="Version1.php" role="php" />
+     <file name="Version2.php" role="php" />
+    </dir> <!-- /SimpleCAS/Server -->
+    <file name="ProxyGranting.php" role="php" />
+    <file name="Server.php" role="php" />
+    <file name="SingleSignOut.php" role="php" />
+   </dir> <!-- /SimpleCAS -->
+   <file name="SimpleCAS.php" role="php" />
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.6</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.3</min>
+   </pearinstaller>
+   <package>
+    <name>HTTP_Request2</name>
+    <channel>pear.php.net</channel>
+    <min>0.2.0</min>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-12-08</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>
+First Release.
+   </notes>
+  </release>
+ </changelog>
+</package>
