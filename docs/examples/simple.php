@@ -2,15 +2,7 @@
 ini_set('display_errors', true);
 chdir(dirname(dirname(dirname(__FILE__))));
 
-require_once 'SimpleCAS.php';
-require_once 'SimpleCAS/Server.php';
-require_once 'SimpleCAS/SingleSignOut.php';
-require_once 'SimpleCAS/ProxyGranting.php';
-require_once 'SimpleCAS/ProxyGranting/Storage.php';
-require_once 'SimpleCAS/ProxyGranting/Storage/File.php';
-require_once 'SimpleCAS/Server/Version1.php';
-require_once 'SimpleCAS/Server/Version2.php';
-require_once 'SimpleCAS/Server/Version2/ValidationResponse.php';
+require_once 'SimpleCAS/Autoload.php';
 require_once 'HTTP/Request2.php';
 
 $server = new SimpleCAS_Server_Version2('login.unl.edu', 443, 'cas');

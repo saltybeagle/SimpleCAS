@@ -57,8 +57,8 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.0.1');
-$pfm->setReleaseVersion('0.0.1');
+$pfm->setAPIVersion('0.1.0');
+$pfm->setReleaseVersion('0.1.0');
 $pfm->setNotes('
 First Release.
 ');
