@@ -9,7 +9,7 @@
  * @author    Brett Bieber <brett.bieber@gmail.com>
  * @copyright 2008 Regents of the University of Nebraska
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
- * @link      http://svn.saltybeagle.com/listing.php?repname=saltybeagle&path=%2Fphp5cas%2F
+ * @link      http://code.google.com/p/simplecas/
  */
 class SimpleCAS_Server_Version1 implements SimpleCAS_Server
 {
