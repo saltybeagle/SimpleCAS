@@ -57,17 +57,18 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.1.0');
-$pfm->setReleaseVersion('0.1.0');
+$pfm->setAPIVersion('0.1.1');
+$pfm->setReleaseVersion('0.1.1');
 $pfm->setNotes('
-First Release.
+* Fix Notice: Trying to get property of non-object in SimpleCAS/Server/Version2/ValidationResponse.php on line 23
+* Change PHP dependency to 5.2.5
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
 $pfm->setLicense('BSD License', 'http://www1.unl.edu/wdn/wiki/Software_License');
 
 $pfm->clearDeps();
-$pfm->setPhpDep('5.2.6');
+$pfm->setPhpDep('5.2.5');
 $pfm->setPearinstallerDep('1.4.3');
 $pfm->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.1.0');
 

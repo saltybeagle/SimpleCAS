@@ -20,7 +20,9 @@ class SimpleCAS_Server_Version2_ValidationResponse
                     && $uid = $success->item(0)->getElementsByTagName('user')) {
                     // We have the user name, check for PGTIOU
                     if ($iou = $success->item(0)->getElementsByTagName('proxyGrantingTicket')) {
-                        $this->pgtiou = $iou->item(0)->nodeValue;
+                        if ($iou->length) {
+                            $this->pgtiou = $iou->item(0)->nodeValue;
+                        }
                     }
                     $this->authenticationsuccess = true;
                     $this->user = $uid->item(0)->nodeValue;
@@ -50,6 +52,11 @@ class SimpleCAS_Server_Version2_ValidationResponse
             return $this->user;
         }
         throw new Exception('Validation was not successful');
+    }
+    
+    function logout()
+    {
+        
     }
 }
 ?>

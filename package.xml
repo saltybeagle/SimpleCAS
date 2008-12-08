@@ -12,10 +12,10 @@ in a JA-SIG CAS secured environment.</description>
   <active>yes</active>
  </lead>
  <date>2008-12-08</date>
- <time>12:33:07</time>
+ <time>16:44:35</time>
  <version>
-  <release>0.1.0</release>
-  <api>0.1.0</api>
+  <release>0.1.1</release>
+  <api>0.1.1</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -23,7 +23,8 @@ in a JA-SIG CAS secured environment.</description>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
  <notes>
-First Release.
+* Fix Notice: Trying to get property of non-object in SimpleCAS/Server/Version2/ValidationResponse.php on line 23
+* Change PHP dependency to 5.2.5
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -57,7 +58,7 @@ First Release.
  <dependencies>
   <required>
    <php>
-    <min>5.2.6</min>
+    <min>5.2.5</min>
    </php>
    <pearinstaller>
     <min>1.4.3</min>
@@ -82,8 +83,22 @@ First Release.
    </stability>
    <date>2008-12-08</date>
    <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>First Release.</notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.1</release>
+    <api>0.1.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2008-12-08</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
    <notes>
-First Release.
+* Fix Notice: Trying to get property of non-object in SimpleCAS/Server/Version2/ValidationResponse.php on line 23
+* Change PHP dependency to 5.2.5
    </notes>
   </release>
  </changelog>
