@@ -11,12 +11,7 @@ require_once 'SimpleCAS/ProxyGranting/Storage/File.php';
 require_once 'SimpleCAS/Server/Version1.php';
 require_once 'SimpleCAS/Server/Version2.php';
 require_once 'SimpleCAS/Server/Version2/ValidationResponse.php';
-require_once 'HTTP/Request.php';
-require_once 'HTTP/Request/Uri.php';
-require_once 'HTTP/Request/Headers.php';
-require_once 'HTTP/Request/Response.php';
-require_once 'HTTP/Request/Adapter.php';
-require_once 'HTTP/Request/Adapter/Phpstream.php';
+require_once 'HTTP/Request2.php';
 
 $server = new SimpleCAS_Server_Version2('login.unl.edu', 443, 'cas');
 

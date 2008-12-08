@@ -44,12 +44,12 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
     {
         $validation_url = $this->getValidationURL($ticket, $service);
         
-        $http_request = new PEAR2_HTTP_Request($validation_url);
+        $http_request = new HTTP_Request2($validation_url);
         
-        $response = $http_request->sendRequest();
+        $response = $http_request->send();
         
-        if ($response->code == 200) {
-            $validationResponse = new SimpleCAS_Server_Version2_ValidationResponse($response->body);
+        if ($response->getStatus() == 200) {
+            $validationResponse = new SimpleCAS_Server_Version2_ValidationResponse($response->getBody());
             if ($validationResponse->authenticationSuccess()) {
                 return $validationResponse;
             }

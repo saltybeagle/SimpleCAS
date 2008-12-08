@@ -69,7 +69,7 @@ $pfm->setLicense('BSD License', 'http://www1.unl.edu/wdn/wiki/Software_License')
 $pfm->clearDeps();
 $pfm->setPhpDep('5.2.6');
 $pfm->setPearinstallerDep('1.4.3');
-$pfm->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.2.0');
+$pfm->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.1.0');
 
 $pfm->generateContents();
 $pfm->writePackageFile();

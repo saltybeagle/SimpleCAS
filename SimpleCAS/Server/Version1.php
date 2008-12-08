@@ -93,13 +93,13 @@ class SimpleCAS_Server_Version1 implements SimpleCAS_Server
     {
         $validation_url = $this->getValidationURL($ticket, $service);
         
-        $http_request = new PEAR2_HTTP_Request($validation_url);
+        $http_request = new HTTP_Request2($validation_url);
         
-        $response = $http_request->sendRequest();
+        $response = $http_request->send();
         
-        if ($response->code == 200
-            && substr($response->body, 0, 3) == 'yes') {
-            list($message, $uid) = explode("\n", $response->body);
+        if ($response->getStatus() == 200
+            && substr($response->getBody(), 0, 3) == 'yes') {
+            list($message, $uid) = explode("\n", $response->getBody());
             return $uid;
         }
         return false;
