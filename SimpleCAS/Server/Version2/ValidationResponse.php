@@ -24,7 +24,7 @@ class SimpleCAS_Server_Version2_ValidationResponse
                             $this->pgtiou = $iou->item(0)->nodeValue;
                         }
                     }
-                    $this->authenticationsuccess = true;
+                    $this->authenticationSuccess = true;
                     $this->user = $uid->item(0)->nodeValue;
                 }
             }
@@ -33,7 +33,7 @@ class SimpleCAS_Server_Version2_ValidationResponse
     
     function authenticationSuccess()
     {
-        return $this->authenticationsuccess;
+        return $this->authenticationSuccess;
     }
     
     function getPGTIOU()
