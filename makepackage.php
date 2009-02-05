@@ -58,18 +58,21 @@ $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
 $pfm->setAPIVersion('0.1.1');
-$pfm->setReleaseVersion('0.1.1');
+$pfm->setReleaseVersion('0.1.2');
 $pfm->setNotes('
-* Fix Notice: Trying to get property of non-object in SimpleCAS/Server/Version2/ValidationResponse.php on line 23
-* Change PHP dependency to 5.2.5
+* Update PEAR dependency to 1.5.4
+* Match case for variables (jthiltges)
+* In CAS v2 validateTicket, typecast successful return value to string (jthiltges)
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
+$pfm->updatemaintainer('helper','jthiltges','John Thiltges','jthiltges@gmail.com');
+
 $pfm->setLicense('BSD License', 'http://www1.unl.edu/wdn/wiki/Software_License');
 
 $pfm->clearDeps();
 $pfm->setPhpDep('5.2.5');
-$pfm->setPearinstallerDep('1.4.3');
+$pfm->setPearinstallerDep('1.5.4');
 $pfm->addPackageDepWithChannel('required', 'HTTP_Request2', 'pear.php.net', '0.1.0');
 
 $pfm->generateContents();
