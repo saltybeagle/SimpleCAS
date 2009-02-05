@@ -51,7 +51,7 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
         if ($response->getStatus() == 200) {
             $validationResponse = new SimpleCAS_Server_Version2_ValidationResponse($response->getBody());
             if ($validationResponse->authenticationSuccess()) {
-                return $validationResponse;
+                return (string)$validationResponse;
             }
         }
         return false;
