@@ -11,9 +11,11 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-class SimpleCAS_Server_Version1 implements SimpleCAS_Server
+class SimpleCAS_Server_Version1 extends SimpleCAS_Server
 {
     const VERSION = '1.0';
+    
+    protected $request;
     
     /**
      * Construct a new SimpleCAS server object.
@@ -93,7 +95,9 @@ class SimpleCAS_Server_Version1 implements SimpleCAS_Server
     {
         $validation_url = $this->getValidationURL($ticket, $service);
         
-        $http_request = new HTTP_Request2($validation_url);
+        $http_request = clone $this->getRequest();
+        
+        $http_request->setURL($validation_url);
         
         $response = $http_request->send();
         

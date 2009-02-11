@@ -14,8 +14,10 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-interface SimpleCAS_Server
+abstract class SimpleCAS_Server
 {
+    protected $request;
+    
     /**
      * Returns the login URL for the cas server.
      *
@@ -23,7 +25,7 @@ interface SimpleCAS_Server
      * 
      * @return string
      */
-    function getLoginURL($service);
+    abstract function getLoginURL($service);
     
     /**
      * Returns the logout url for the CAS server.
@@ -32,14 +34,14 @@ interface SimpleCAS_Server
      * 
      * @return string
      */
-    function getLogoutURL($service = null);
+    abstract function getLogoutURL($service = null);
     
     /**
      * Returns the version of this cas server.
      * 
      * @return string
      */
-    function getVersion();
+    abstract function getVersion();
     
     /**
      * Function to validate a ticket and service combination.
@@ -49,6 +51,29 @@ interface SimpleCAS_Server
      * 
      * @return false|string False on failure, user name on success.
      */
-    function validateTicket($ticket, $service);
+    abstract function validateTicket($ticket, $service);
+    
+    /**
+     * Get the HTTP_Request2 object.
+     *
+     * @return HTTP_Request
+     */
+    function getRequest()
+    {
+        if (!$this->request instanceof HTTP_Request2) {
+            $this->request = new HTTP_Request2();
+        }
+        return $this->request; 
+    }
+    
+    /**
+     * Set the HTTP_Request object.
+     *
+     * @param HTTP_Request2 $request
+     */
+    function setRequest(HTTP_Request2 $request)
+    {
+        $this->request = $request;
+    }
 }
 ?>

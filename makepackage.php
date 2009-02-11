@@ -57,12 +57,13 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.1.1');
-$pfm->setReleaseVersion('0.1.2');
+$pfm->setAPIVersion('0.2.0');
+$pfm->setReleaseVersion('0.2.0');
 $pfm->setNotes('
-* Update PEAR dependency to 1.5.4
-* Match case for variables (jthiltges)
-* In CAS v2 validateTicket, typecast successful return value to string (jthiltges)
+* Allow setting HTTP_Request2 object so configuration can be set.
+  $server->getRequest()->setConfig(\'ssl_verify_peer\', false);
+* Add $server->getRequest(), $server->setRequest(HTTP_Request2 $http_request)
+Change interface for server to abstract class.
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');

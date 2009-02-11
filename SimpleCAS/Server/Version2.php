@@ -44,7 +44,9 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
     {
         $validation_url = $this->getValidationURL($ticket, $service);
         
-        $http_request = new HTTP_Request2($validation_url);
+        $http_request = clone $this->getRequest();
+        
+        $http_request->setURL($validation_url);
         
         $response = $http_request->send();
         

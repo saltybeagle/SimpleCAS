@@ -7,6 +7,8 @@ require_once 'HTTP/Request2.php';
 
 $server = new SimpleCAS_Server_Version2('login.unl.edu', 443, 'cas');
 
+$server->getRequest()->setConfig('ssl_verify_peer', false);
+
 $client = SimpleCAS::client($server);
 $client->forceAuthentication();
 

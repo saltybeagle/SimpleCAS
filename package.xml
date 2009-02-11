@@ -17,11 +17,11 @@ in a JA-SIG CAS secured environment.</description>
   <email>jthiltges@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2009-02-05</date>
- <time>10:56:53</time>
+ <date>2009-02-11</date>
+ <time>15:13:27</time>
  <version>
-  <release>0.1.2</release>
-  <api>0.1.1</api>
+  <release>0.2.0</release>
+  <api>0.2.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -29,9 +29,10 @@ in a JA-SIG CAS secured environment.</description>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
  <notes>
-* Update PEAR dependency to 1.5.4
-* Match case for variables (jthiltges)
-* In CAS v2 validateTicket, typecast successful return value to string (jthiltges)
+* Allow setting HTTP_Request2 object so configuration can be set.
+  $server-&gt;getRequest()-&gt;setConfig(&apos;ssl_verify_peer&apos;, false);
+* Add $server-&gt;getRequest(), $server-&gt;setRequest(HTTP_Request2 $http_request)
+Change interface for server to abstract class.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -125,6 +126,24 @@ First Release.
 * Update PEAR dependency to 1.5.4
 * Match case for variables (jthiltges)
 * In CAS v2 validateTicket, typecast successful return value to string (jthiltges)
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.0</release>
+    <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2009-02-11</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>
+* Allow setting HTTP_Request2 object so configuration can be set.
+  $server-&gt;getRequest()-&gt;setConfig(&apos;ssl_verify_peer&apos;, false);
+* Add $server-&gt;getRequest(), $server-&gt;setRequest(HTTP_Request2 $http_request)
+Change interface for server to abstract class.
    </notes>
   </release>
  </changelog>
