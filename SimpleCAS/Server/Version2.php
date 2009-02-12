@@ -29,7 +29,7 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
                           . $this->server_uri . '/serviceValidate?'
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket
-                          . '&pgtUrl=' . urlencode($service);
+                          . '&pgtUrl=' . urlencode($pgtUrl);
     }
     
     /**
