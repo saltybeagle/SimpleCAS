@@ -58,12 +58,10 @@ $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
 $pfm->setAPIVersion('0.2.0');
-$pfm->setReleaseVersion('0.2.0');
+$pfm->setReleaseVersion('0.2.1');
 $pfm->setNotes('
-* Allow setting HTTP_Request2 object so configuration can be set.
-  $server->getRequest()->setConfig(\'ssl_verify_peer\', false);
-* Add $server->getRequest(), $server->setRequest(HTTP_Request2 $http_request)
-Change interface for server to abstract class.
+* Explicitly call __toString() for PHP 5.1 compatibility. [jthiltges]
+* Add Zend_Auth_Adapter_SimpleCAS to the examples. [jthiltges]
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
