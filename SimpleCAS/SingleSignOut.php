@@ -22,4 +22,3 @@ interface SimpleCAS_SingleSignOut
      */
     function validateLogoutRequest($post);
 }
-?>

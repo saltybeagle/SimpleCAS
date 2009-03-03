@@ -1,5 +1,5 @@
 <?php
-class SimpleCAS_Server_Version2_ValidationResponse
+class SimpleCAS_Protocol_Version2_ValidationResponse
 {
     protected $authenticationSuccess = false;
     protected $user    = false;

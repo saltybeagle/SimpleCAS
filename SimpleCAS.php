@@ -4,7 +4,7 @@
  * 
  * <code>
  * <?php
- * $server = new SimpleCAS_Server_Version2('login.unl.edu', 443, 'cas');
+ * $server = new SimpleCAS_Protocol_Version2('login.unl.edu', 443, 'cas');
  * $client = SimpleCAS::client($server);
  * $client->forceAuthentication();
  * 
@@ -50,11 +50,11 @@ class SimpleCAS
     private $_authenticated = false;
     
     /**
-     * Server running the CAS service.
+     * Protocol for the server running the CAS service.
      *
-     * @var CAS_Server
+     * @var SimpleCAS_Protocol
      */
-    protected $server;
+    protected $protocol;
     
     /**
      * User's login name if authenticated.
@@ -66,15 +66,15 @@ class SimpleCAS
     /**
      * Construct a CAS client object.
      *
-     * @param CAS_Server $server Server to use for authentication.
+     * @param SimpleCAS_Protocol $protocol Protocol to use for authentication.
      */
-    private function __construct(SimpleCAS_Server $server)
+    private function __construct(SimpleCAS_Protocol $protocol)
     {
-        $this->server = $server;
+        $this->protocol = $protocol;
         
-        if ($this->server instanceof SimpleCAS_SingleSignOut
+        if ($this->protocol instanceof SimpleCAS_SingleSignOut
             && isset($_POST)) {
-            if ($ticket = $this->server->validateLogoutRequest($_POST)) {
+            if ($ticket = $this->protocol->validateLogoutRequest($_POST)) {
                 $this->logout($ticket);
             }
         }
@@ -104,7 +104,7 @@ class SimpleCAS
      */
     protected function validateTicket($ticket)
     {
-        if ($uid = $this->server->validateTicket($ticket, self::getURL())) {
+        if ($uid = $this->protocol->validateTicket($ticket, self::getURL())) {
             $this->setAuthenticated($uid);
             $this->redirect(self::getURL());
             return true;
@@ -144,10 +144,10 @@ class SimpleCAS
      * 
      * @return CAS
      */
-    static public function client(SimpleCAS_Server $server)
+    static public function client(SimpleCAS_Protocol $protocol)
     {
         if (!isset(self::$_instance)) {
-            self::$_instance = new self($server);
+            self::$_instance = new self($protocol);
         }
         
         return self::$_instance;
@@ -163,7 +163,7 @@ class SimpleCAS
     function forceAuthentication()
     {
         if (!$this->isAuthenticated()) {
-            self::redirect($this->server->getLoginURL(self::getURL()));
+            self::redirect($this->protocol->getLoginURL(self::getURL()));
             exit();
         }
         return $this;

@@ -11,7 +11,7 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements SimpleCAS_SingleSignOut, SimpleCAS_ProxyGranting
+class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements SimpleCAS_SingleSignOut, SimpleCAS_ProxyGranting
 {
     const VERSION = '2.0';
     
@@ -25,8 +25,8 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
      */
     function getValidationURL($ticket, $service, $pgtUrl = null)
     {
-        return 'https://' . $this->server_hostname . '/'
-                          . $this->server_uri . '/serviceValidate?'
+        return 'https://' . $this->hostname . '/'
+                          . $this->uri . '/serviceValidate?'
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket
                           . '&pgtUrl=' . urlencode($pgtUrl);
@@ -51,7 +51,7 @@ class SimpleCAS_Server_Version2 extends SimpleCAS_Server_Version1 implements Sim
         $response = $http_request->send();
         
         if ($response->getStatus() == 200) {
-            $validationResponse = new SimpleCAS_Server_Version2_ValidationResponse($response->getBody());
+            $validationResponse = new SimpleCAS_Protocol_Version2_ValidationResponse($response->getBody());
             if ($validationResponse->authenticationSuccess()) {
                 return $validationResponse->__toString();
             }

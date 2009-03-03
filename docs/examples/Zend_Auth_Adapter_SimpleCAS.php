@@ -8,9 +8,7 @@
  * {
  *     $auth = Zend_Auth::getInstance();
  *     $authAdapter = new UNL_CasZendAuthAdapter(
- *         Zend_Registry::get('config')->auth->cas->hostname,
- *         Zend_Registry::get('config')->auth->cas->port,
- *         Zend_Registry::get('config')->auth->cas->uri
+ *         Zend_Registry::get('config')->auth->cas
  *     );
  * 
  *     # User has not been identified, and there's a ticket in the URL
@@ -44,7 +42,7 @@ class Zend_Auth_Adapter_SimpleCAS implements Zend_Auth_Adapter_Interface
     /**
      * CAS client
      */
-    private $_server;
+    private $_protocol;
 
     /**
      * Service ticket
@@ -59,13 +57,9 @@ class Zend_Auth_Adapter_SimpleCAS implements Zend_Auth_Adapter_Interface
      * @param string $server_uri
      * @return void
      */ 
-    public function __construct($server_hostname, $server_port, $server_uri)
+    public function __construct($options)
     {
-        $this->_server = new SimpleCAS_Server_Version2(
-            $server_hostname,
-            $server_port,
-            $server_uri
-        );
+        $this->_protocol = new SimpleCAS_Protocol_Version2($options);
     }
 
     public function setTicket($ticket)
@@ -83,7 +77,7 @@ class Zend_Auth_Adapter_SimpleCAS implements Zend_Auth_Adapter_Interface
      */ 
     public function authenticate()
     {
-        if ($id = $this->_server->validateTicket($this->_ticket, self::getURL())) {
+        if ($id = $this->_protocol->validateTicket($this->_ticket, self::getURL())) {
             return new Zend_Auth_Result(
                 Zend_Auth_Result::SUCCESS,
                 $id,
@@ -134,7 +128,7 @@ class Zend_Auth_Adapter_SimpleCAS implements Zend_Auth_Adapter_Interface
      */
     public function getLoginURL()
     {
-        return $this->_server->getLoginURL(self::getURL());
+        return $this->_protocol->getLoginURL(self::getURL());
     }
  
 }

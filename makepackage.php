@@ -57,11 +57,11 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.2.0');
-$pfm->setReleaseVersion('0.2.1');
+$pfm->setAPIVersion('0.3.0');
+$pfm->setReleaseVersion('0.3.0');
 $pfm->setNotes('
-* Explicitly call __toString() for PHP 5.1 compatibility. [jthiltges]
-* Add Zend_Auth_Adapter_SimpleCAS to the examples. [jthiltges]
+* Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
+* Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');

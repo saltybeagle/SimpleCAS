@@ -14,7 +14,7 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-abstract class SimpleCAS_Server
+abstract class SimpleCAS_Protocol
 {
     protected $request;
     

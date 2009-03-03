@@ -11,7 +11,7 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-class SimpleCAS_Server_Version1 extends SimpleCAS_Server
+class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
 {
     const VERSION = '1.0';
     
@@ -20,17 +20,20 @@ class SimpleCAS_Server_Version1 extends SimpleCAS_Server
     /**
      * Construct a new SimpleCAS server object.
      *
-     * @param string $server_hostname Server hostname - login.unl.edu
-     * @param int    $server_port     Server port number - 443 (ssl)
-     * @param string $server_uri      Server uri - cas
+     *  <code>
+     *  $options = array('hostname' => 'login.unl.edu',
+     *                   'port'     => 443,
+     *                   'uri'      => 'cas');
+     *  $protocol = new SimpleCAS_Protocol_Version1($options);
+     *  </code>
+     *
+     * @param array()
      */
-    function __construct($server_hostname,
-                         $server_port,
-                         $server_uri)
+    function __construct($options)
     {
-        $this->server_hostname = $server_hostname;
-        $this->server_port     = $server_port;
-        $this->server_uri      = $server_uri;
+        foreach ($options as $option=>$val) {
+            $this->$option = $val;
+        }
     }
     
     /**
@@ -43,8 +46,8 @@ class SimpleCAS_Server_Version1 extends SimpleCAS_Server
      */
     function getValidationURL($ticket, $service)
     {
-        return 'https://' . $this->server_hostname . '/'
-                          . $this->server_uri . '/validate?'
+        return 'https://' . $this->hostname . '/'
+                          . $this->uri . '/validate?'
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket;
     }
@@ -58,8 +61,8 @@ class SimpleCAS_Server_Version1 extends SimpleCAS_Server
      */
     function getLoginURL($service)
     {
-        return 'https://' . $this->server_hostname
-                          . '/'.$this->server_uri
+        return 'https://' . $this->hostname
+                          . '/'.$this->uri
                           . '/login?service='
                           . urlencode($service);
     }
@@ -77,8 +80,8 @@ class SimpleCAS_Server_Version1 extends SimpleCAS_Server
             $service = '?url='.urlencode($service);
         }
         
-        return 'https://' . $this->server_hostname
-                          . '/'.$this->server_uri
+        return 'https://' . $this->hostname
+                          . '/'.$this->uri
                           . '/logout'
                           . $service;
     }
