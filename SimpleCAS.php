@@ -164,7 +164,6 @@ class SimpleCAS
     {
         if (!$this->isAuthenticated()) {
             self::redirect($this->protocol->getLoginURL(self::getURL()));
-            exit();
         }
         return $this;
     }
@@ -191,7 +190,6 @@ class SimpleCAS
     {
         session_destroy();
         $this->redirect($this->server->getLogoutURL(self::getURL()));
-        exit();
     }
     
     /**
@@ -234,6 +232,7 @@ class SimpleCAS
     public static function redirect($url)
     {
         header("Location: $url");
+        exit();
     }
     
     /**

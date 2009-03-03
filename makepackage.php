@@ -62,6 +62,7 @@ $pfm->setReleaseVersion('0.3.0');
 $pfm->setNotes('
 * Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
 * Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
+* Exit immediately after re-direct.
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');

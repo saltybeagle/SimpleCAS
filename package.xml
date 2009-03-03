@@ -17,11 +17,11 @@ in a JA-SIG CAS secured environment.</description>
   <email>jthiltges@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2009-02-12</date>
- <time>12:06:16</time>
+ <date>2009-03-03</date>
+ <time>09:50:39</time>
  <version>
-  <release>0.2.1</release>
-  <api>0.2.0</api>
+  <release>0.3.0</release>
+  <api>0.3.0</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -29,8 +29,9 @@ in a JA-SIG CAS secured environment.</description>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
  <notes>
-* Explicitly call __toString() for PHP 5.1 compatibility. [jthiltges]
-* Add Zend_Auth_Adapter_SimpleCAS to the examples. [jthiltges]
+* Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
+* Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
+* Exit immediately after re-direct.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -41,22 +42,22 @@ in a JA-SIG CAS secured environment.</description>
     </dir> <!-- /docs/examples -->
    </dir> <!-- /docs -->
    <dir name="SimpleCAS">
+    <dir name="Protocol">
+     <dir name="Version2">
+      <file name="ValidationResponse.php" role="php" />
+     </dir> <!-- /SimpleCAS/Protocol/Version2 -->
+     <file name="Version1.php" role="php" />
+     <file name="Version2.php" role="php" />
+    </dir> <!-- /SimpleCAS/Protocol -->
     <dir name="ProxyGranting">
      <dir name="Storage">
       <file name="File.php" role="php" />
      </dir> <!-- /SimpleCAS/ProxyGranting/Storage -->
      <file name="Storage.php" role="php" />
     </dir> <!-- /SimpleCAS/ProxyGranting -->
-    <dir name="Server">
-     <dir name="Version2">
-      <file name="ValidationResponse.php" role="php" />
-     </dir> <!-- /SimpleCAS/Server/Version2 -->
-     <file name="Version1.php" role="php" />
-     <file name="Version2.php" role="php" />
-    </dir> <!-- /SimpleCAS/Server -->
     <file name="Autoload.php" role="php" />
+    <file name="Protocol.php" role="php" />
     <file name="ProxyGranting.php" role="php" />
-    <file name="Server.php" role="php" />
     <file name="SingleSignOut.php" role="php" />
    </dir> <!-- /SimpleCAS -->
    <file name="SimpleCAS.php" role="php" />
@@ -159,6 +160,23 @@ Change interface for server to abstract class.
    <notes>
 * Explicitly call __toString() for PHP 5.1 compatibility. [jthiltges]
 * Add Zend_Auth_Adapter_SimpleCAS to the examples. [jthiltges]
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.0</release>
+    <api>0.3.0</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2009-03-03</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>
+* Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
+* Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
+* Exit immediately after re-direct.
    </notes>
   </release>
  </changelog>
