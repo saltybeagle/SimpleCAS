@@ -4,8 +4,8 @@
  * 
  * <code>
  * <?php
- * $server = new SimpleCAS_Protocol_Version2('login.unl.edu', 443, 'cas');
- * $client = SimpleCAS::client($server);
+ * $protocol = new SimpleCAS_Protocol_Version2('login.unl.edu', 443, 'cas');
+ * $client = SimpleCAS::client($protocol);
  * $client->forceAuthentication();
  * 
  * if (isset($_GET['logout'])) {
