@@ -17,11 +17,11 @@ in a JA-SIG CAS secured environment.</description>
   <email>jthiltges@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2009-03-03</date>
- <time>09:50:39</time>
+ <date>2009-04-06</date>
+ <time>11:23:17</time>
  <version>
-  <release>0.3.0</release>
-  <api>0.3.0</api>
+  <release>0.3.1</release>
+  <api>0.3.1</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -29,9 +29,7 @@ in a JA-SIG CAS secured environment.</description>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
  <notes>
-* Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
-* Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
-* Exit immediately after re-direct.
+* Prefix session variables with __SIMPLECAS [saltybeagle]
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -177,6 +175,21 @@ Change interface for server to abstract class.
 * Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
 * Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
 * Exit immediately after re-direct.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.3.1</release>
+    <api>0.3.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2009-04-06</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>
+* Prefix session variables with __SIMPLECAS [saltybeagle]
    </notes>
   </release>
  </changelog>

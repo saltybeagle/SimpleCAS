@@ -57,12 +57,10 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('alpha');
 $pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.3.0');
-$pfm->setReleaseVersion('0.3.0');
+$pfm->setAPIVersion('0.3.1');
+$pfm->setReleaseVersion('0.3.1');
 $pfm->setNotes('
-* Issue 1: Rename SimpleCAS_Server to SimpleCAS_Protocol [saltybeagle]
-* Issue 2: Switch to arrays for the protocol constructors. [saltybeagle]
-* Exit immediately after re-direct.
+* Prefix session variables with __SIMPLECAS [saltybeagle]
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
