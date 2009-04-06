@@ -81,7 +81,7 @@ class SimpleCAS
         
         if (session_id() == '') {
             session_start();
-            if (isset($_SESSION['ticket'])) {
+            if (isset($_SESSION['__SIMPLECAS_TICKET'])) {
                 $this->_authenticated = true;
             }
         }
@@ -122,9 +122,9 @@ class SimpleCAS
      */
     protected function setAuthenticated($uid)
     {
-        $_SESSION['ticket']   = true;
-        $_SESSION['uid']      = $uid;
-        $this->_authenticated = true;
+        $_SESSION['__SIMPLECAS_TICKET'] = true;
+        $_SESSION['__SIMPLECAS_UID']    = $uid;
+        $this->_authenticated           = true;
     }
     
     /**
@@ -134,7 +134,7 @@ class SimpleCAS
      */
     public function getUsername()
     {
-        return $_SESSION['uid'];
+        return $_SESSION['__SIMPLECAS_UID'];
     }
     
     /**
