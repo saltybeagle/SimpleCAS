@@ -100,9 +100,17 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
         
         $http_request = clone $this->getRequest();
         
-        $http_request->setURL($validation_url);
+        $defaultClass = SimpleCAS_Protocol::DEFAULT_REQUEST_CLASS;
+        if ($http_request instanceof $defaultClass) {
+            $http_request->setURL($validation_url);
+            
+            $response = $http_request->send();
+        } else {
+            $http_request->setUri($validation_url);
+            
+            $response = $http_request->request();
+        }
         
-        $response = $http_request->send();
         
         if ($response->getStatus() == 200
             && substr($response->getBody(), 0, 3) == 'yes') {

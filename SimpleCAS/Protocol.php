@@ -16,6 +16,9 @@
  */
 abstract class SimpleCAS_Protocol
 {
+    const DEFAULT_REQUEST_CLASS = 'HTTP_Request2';
+    
+    protected $requestClass;
     protected $request;
     
     /**
@@ -60,18 +63,19 @@ abstract class SimpleCAS_Protocol
      */
     function getRequest()
     {
-        if (!$this->request instanceof HTTP_Request2) {
-            $this->request = new HTTP_Request2();
+        $class = empty($this->requestClass) ? self::DEFAULT_REQUEST_CLASS : $this->requestClass;
+        if (!$this->request instanceof $class) {
+            $this->request = new $class();
         }
         return $this->request; 
     }
     
     /**
-     * Set the HTTP_Request object.
+     * Set the HTTP Request object.
      *
-     * @param HTTP_Request2 $request
+     * @param $request
      */
-    function setRequest(HTTP_Request2 $request)
+    function setRequest($request)
     {
         $this->request = $request;
     }

@@ -81,9 +81,10 @@ class SimpleCAS
         
         if (session_id() == '') {
             session_start();
-            if (isset($_SESSION['__SIMPLECAS_TICKET'])) {
-                $this->_authenticated = true;
-            }
+        }
+        
+        if (isset($_SESSION['__SIMPLECAS_TICKET'])) {
+            $this->_authenticated = true;
         }
         
         if ($this->_authenticated == false

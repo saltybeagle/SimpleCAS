@@ -46,9 +46,16 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
         
         $http_request = clone $this->getRequest();
         
-        $http_request->setURL($validation_url);
-        
-        $response = $http_request->send();
+        $defaultClass = SimpleCAS_Protocol::DEFAULT_REQUEST_CLASS;
+        if ($http_request instanceof $defaultClass) {
+            $http_request->setURL($validation_url);
+            
+            $response = $http_request->send();
+        } else {
+            $http_request->setUri($validation_url);
+            
+            $response = $http_request->request();
+        }
         
         if ($response->getStatus() == 200) {
             $validationResponse = new SimpleCAS_Protocol_Version2_ValidationResponse($response->getBody());
