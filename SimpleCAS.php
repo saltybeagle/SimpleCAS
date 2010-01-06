@@ -190,7 +190,10 @@ class SimpleCAS
     public function logout($url = '')
     {
         session_destroy();
-        $this->redirect($this->protocol->getLogoutURL(self::getURL()));
+        if (empty($url)) {
+            $url = self::getURL();
+        }
+        $this->redirect($this->protocol->getLogoutURL($url));
     }
     
     /**
