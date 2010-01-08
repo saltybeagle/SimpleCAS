@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.8.0alpha1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>SimpleCAS</name>
  <channel>simplecas.googlecode.com/svn</channel>
  <summary>A PHP5 library for CAS Authentication.</summary>
@@ -17,19 +17,25 @@ in a JA-SIG CAS secured environment.</description>
   <email>jthiltges@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2009-04-06</date>
- <time>11:23:17</time>
+ <helper>
+  <name>Kevin Abel</name>
+  <user>kevin.abel.0</user>
+  <email>kevin.abel.0@gmail.com</email>
+  <active>yes</active>
+ </helper>
+ <date>2010-01-08</date>
+ <time>09:14:45</time>
  <version>
-  <release>0.3.1</release>
-  <api>0.3.1</api>
+  <release>0.4.0</release>
+  <api>0.4.0</api>
  </version>
  <stability>
-  <release>alpha</release>
-  <api>alpha</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
  <notes>
-* Prefix session variables with __SIMPLECAS [saltybeagle]
+* Allow request adapter to be customized. [Kevin]
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -190,6 +196,21 @@ Change interface for server to abstract class.
    <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
    <notes>
 * Prefix session variables with __SIMPLECAS [saltybeagle]
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.4.0</release>
+    <api>0.4.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-01-08</date>
+   <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
+   <notes>
+* Allow request adapter to be customized. [Kevin]
    </notes>
   </release>
  </changelog>

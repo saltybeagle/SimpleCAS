@@ -55,16 +55,17 @@ $pfm->setSummary('A PHP5 library for CAS Authentication.');
 $pfm->setDescription('This package is a PHP5 only library for identifying users
 in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
-$pfm->setAPIStability('alpha');
-$pfm->setReleaseStability('alpha');
-$pfm->setAPIVersion('0.3.1');
-$pfm->setReleaseVersion('0.3.1');
+$pfm->setAPIStability('beta');
+$pfm->setReleaseStability('beta');
+$pfm->setAPIVersion('0.4.0');
+$pfm->setReleaseVersion('0.4.0');
 $pfm->setNotes('
-* Prefix session variables with __SIMPLECAS [saltybeagle]
+* Allow request adapter to be customized. [Kevin]
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
 $pfm->updatemaintainer('helper','jthiltges','John Thiltges','jthiltges@gmail.com');
+$pfm->updatemaintainer('helper','kevin.abel.0','Kevin Abel','kevin.abel.0@gmail.com');
 
 $pfm->setLicense('BSD License', 'http://www1.unl.edu/wdn/wiki/Software_License');
 
