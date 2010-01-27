@@ -57,15 +57,16 @@ in a JA-SIG CAS secured environment.');
 $pfm->setChannel('simplecas.googlecode.com/svn');
 $pfm->setAPIStability('beta');
 $pfm->setReleaseStability('beta');
-$pfm->setAPIVersion('0.4.0');
-$pfm->setReleaseVersion('0.4.0');
+$pfm->setAPIVersion('0.5.0');
+$pfm->setReleaseVersion('0.5.0');
 $pfm->setNotes('
-* Allow request adapter to be customized. [Kevin]
+* Allow service url to be customized with SimpleCAS::setURL($url); [ericrasmussen1]
 ');
 
 $pfm->updatemaintainer('lead','saltybeagle','Brett Bieber','brett.bieber@gmail.com');
 $pfm->updatemaintainer('helper','jthiltges','John Thiltges','jthiltges@gmail.com');
 $pfm->updatemaintainer('helper','kevin.abel.0','Kevin Abel','kevin.abel.0@gmail.com');
+$pfm->updatemaintainer('helper','ericrasmussen1','Eric Rasmussen','ericrasmussen1@gmail.com');
 
 $pfm->setLicense('BSD License', 'http://www1.unl.edu/wdn/wiki/Software_License');
 
