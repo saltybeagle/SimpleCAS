@@ -68,7 +68,7 @@ class SimpleCAS
      *
      * @var string
      */
-	static protected $url;
+    static protected $url;
     
     /**
      * Construct a CAS client object.
@@ -93,7 +93,7 @@ class SimpleCAS
         if (isset($_SESSION['__SIMPLECAS_TICKET'])) {
             $this->_authenticated = true;
         }
-		
+        
         
         if ($this->_authenticated == false
             && isset($_GET['ticket'])) {
@@ -211,9 +211,9 @@ class SimpleCAS
      */
     static public function getURL()
     {
-		if (!empty(self::$url)) {
-			return self::$url;
-		}
+        if (!empty(self::$url)) {
+            return self::$url;
+        }
         if (isset($_SERVER['HTTPS'])
             && !empty($_SERVER['HTTPS'])
             && $_SERVER['HTTPS'] == 'on') {
@@ -236,7 +236,7 @@ class SimpleCAS
         
         return $url;
     }
-	
+    
    /**
     * Set an alternative return URL
     * 
@@ -244,10 +244,10 @@ class SimpleCAS
     * 
     * @return void
     */ 
-	public static function setURL($url)
-	{
-		self::$url = $url; 
-	}
+    public static function setURL($url)
+    {
+        self::$url = $url; 
+    }
     
     /**
      * Send a header to redirect the client to another URL.
