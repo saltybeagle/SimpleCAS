@@ -130,4 +130,3 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
         return self::VERSION;
     }
 }
-?>

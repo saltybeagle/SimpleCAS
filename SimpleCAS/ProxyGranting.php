@@ -28,4 +28,3 @@ interface SimpleCAS_ProxyGranting
      */
     function validateProxyTicket($ticket);
 }
-?>

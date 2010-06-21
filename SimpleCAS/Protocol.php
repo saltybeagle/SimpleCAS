@@ -80,4 +80,3 @@ abstract class SimpleCAS_Protocol
         $this->request = $request;
     }
 }
-?>

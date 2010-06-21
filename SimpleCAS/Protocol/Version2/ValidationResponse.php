@@ -59,4 +59,3 @@ class SimpleCAS_Protocol_Version2_ValidationResponse
         
     }
 }
-?>

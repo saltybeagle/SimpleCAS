@@ -11,4 +11,3 @@ class SimpleCAS_ProxyGranting_Storage_File implements SimpleCAS_ProxyGranting_St
         throw new Exception('not implemented');
     }
 }
-?>

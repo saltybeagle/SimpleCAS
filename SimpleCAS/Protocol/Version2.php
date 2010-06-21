@@ -91,4 +91,3 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
         throw new Exception('not implemented');
     }
 }
-?>
