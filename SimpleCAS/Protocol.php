@@ -17,41 +17,54 @@
 abstract class SimpleCAS_Protocol
 {
     const DEFAULT_REQUEST_CLASS = 'HTTP_Request2';
-    
+
     protected $requestClass;
     protected $request;
-    
+
     /**
-     * Returns the login URL for the cas server.
+     * Option to request the CAS server redirect after processing a logout URL.
+     *
+     * This option instructs the getLogoutURL() method to rename the "url" query
+     * parameter to "service", so that a LogoutController on the CAS server that
+     * has followServiceRedirects support enabled can redirect to our URL
+     * instead of rendering a logout template and linking to it.
+     *
+     * @link http://tp.its.yale.edu/pipermail/cas/2008-August/009508.html
+     * @var boolean
+     */
+    protected $logoutServiceRedirect;
+
+    /**
+     * Returns the login URL for the CAS server.
      *
      * @param string $service The URL to the service requesting authentication.
-     * 
+     *
      * @return string
      */
     abstract function getLoginURL($service);
-    
+
     /**
-     * Returns the logout url for the CAS server.
+     * Returns the logout URL for the CAS server.
      *
      * @param string $service A URL to provide the user upon logout.
-     * 
+     *
      * @return string
      */
     abstract function getLogoutURL($service = null);
-    
+
     /**
-     * Returns the version of this cas server.
-     * 
+     * Returns the version of this CAS server.
+     *
      * @return string
      */
     abstract function getVersion();
-    
+
     /**
      * Function to validate a ticket and service combination.
      *
      * @param string $ticket  Ticket given by the CAS Server
      * @param string $service Service requesting authentication
-     * 
+     *
      * @return false|string False on failure, user name on success.
      */
     abstract function validateTicket($ticket, $service);
@@ -69,7 +82,7 @@ abstract class SimpleCAS_Protocol
         }
         return $this->request; 
     }
-    
+
     /**
      * Set the HTTP Request object.
      *
@@ -78,5 +91,25 @@ abstract class SimpleCAS_Protocol
     function setRequest($request)
     {
         $this->request = $request;
+    }
+
+    /**
+     * Get the logoutServiceRedirect option.
+     *
+     * @return boolean
+     */
+    function getLogoutServiceRedirect()
+    {
+        return $this->logoutServiceRedirect;
+    }
+
+    /**
+     * Set the logoutServiceRedirect option.
+     *
+     * @param boolean
+     */
+    function setLogoutServiceRedirect($logoutServiceRedirect)
+    {
+        $this->logoutServiceRedirect = (boolean) $logoutServiceRedirect;
     }
 }

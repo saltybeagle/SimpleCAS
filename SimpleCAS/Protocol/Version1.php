@@ -14,9 +14,9 @@
 class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
 {
     const VERSION = '1.0';
-    
+
     protected $request;
-    
+
     /**
      * Construct a new SimpleCAS server object.
      *
@@ -35,13 +35,13 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
             $this->$option = $val;
         }
     }
-    
+
     /**
      * Returns the URL used to validate a ticket.
      *
      * @param string $ticket  Ticket to validate
      * @param string $service URL to the service requesting authentication
-     * 
+     *
      * @return string
      */
     function getValidationURL($ticket, $service)
@@ -51,12 +51,12 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket;
     }
-    
+
     /**
      * Returns the URL to login form for the CAS server.
      *
      * @param string $service Service url requesting authentication.
-     * 
+     *
      * @return string
      */
     function getLoginURL($service)
@@ -66,18 +66,18 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
                           . '/login?service='
                           . urlencode($service);
     }
-    
+
     /**
      * Returns the URL to logout of the CAS server.
      *
      * @param string $service Service url provided to the user.
-     * 
+     *
      * @return string
      */
-    function getLogoutURL($service = '')
+    function getLogoutURL($service = null)
     {
         if (isset($service)) {
-            $service = '?url='.urlencode($service);
+            $service = ($this->logoutServiceRedirect ? '?service=' : '?url=').urlencode($service);
         }
         
         return 'https://' . $this->hostname
@@ -85,7 +85,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
                           . '/logout'
                           . $service;
     }
-    
+
     /**
      * Function to validate a ticket and service combination.
      *
@@ -97,21 +97,20 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
     function validateTicket($ticket, $service)
     {
         $validation_url = $this->getValidationURL($ticket, $service);
-        
+
         $http_request = clone $this->getRequest();
-        
+
         $defaultClass = SimpleCAS_Protocol::DEFAULT_REQUEST_CLASS;
         if ($http_request instanceof $defaultClass) {
             $http_request->setURL($validation_url);
-            
+
             $response = $http_request->send();
         } else {
             $http_request->setUri($validation_url);
-            
+
             $response = $http_request->request();
         }
-        
-        
+
         if ($response->getStatus() == 200
             && substr($response->getBody(), 0, 3) == 'yes') {
             list($message, $uid) = explode("\n", $response->getBody());
@@ -119,7 +118,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
         }
         return false;
     }
-    
+
     /**
      * Returns the CAS server protocol this object implements.
      *
