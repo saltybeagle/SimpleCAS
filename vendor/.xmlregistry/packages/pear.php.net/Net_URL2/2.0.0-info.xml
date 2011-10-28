@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packagerversion="1.9.4" version="2.0" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Net_URL2</name>
+ <channel>pear.php.net</channel>
+ <extends>Net_URL</extends>
+ <summary>Class for parsing and handling URL.</summary>
+ <description>Provides parsing of URLs into their constituent parts (scheme, host, path etc.), URL generation, and resolving of relative URLs.</description>
+ <lead>
+  <name>David Coallier</name>
+  <user>davidc</user>
+  <email>davidc@php.net</email>
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Christian Schmidt</name>
+  <user>schmidt</user>
+  <email>schmidt@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-10-28</date>
+ <time>11:35:10</time>
+ <version>
+  <release>2.0.0</release>
+  <api>2.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD</license>
+ <notes>
+* Fixed the version of the release. Follow the convention for Package2.
+* Fixed Bug #18917: URL2.php moved to ./Net/Net (davidc)
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="637af3fb6a678dd1665ad13f2ec8c7c8" name="tests/Net/URL2Test.php" role="test"/>
+   <file md5sum="e25e538f2e5b06788f1e71333c9498bc" name="tests/AllTests.php" role="test"/>
+   <file md5sum="294c727633c67bd963151b9d5e7ab801" name="Net/URL2.php" role="php"/>
+   <file baseinstalldir="Net" md5sum="587a224d39fbffa47cacb9fb67b51da1" name="docs/example.php" role="doc"/>
+   <file baseinstalldir="Net" md5sum="ea8b73061588566519fd0e55a230f2a6" name="docs/6470.php" role="doc"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease>
+  <changelog>
+   <release>
+    <version>
+     <release>1.0.0</release>
+     <api>1.0.0</api>
+    </version>
+    <stability>
+     <release>stable</release>
+     <api>stable</api>
+    </stability>
+    <date>2011-10-20</date>
+    <license>BSD</license>
+    <notes>
+* Fixed Bug #17036: Problem with parsed query string
+* Fixed Bug #17087: setOption() function is gone
+* Fixed #17166: Fluent Interface
+* Fixed #17167: Refactor __construct
+* Fixed Bug #18267: setQueryVariables() fails to encode array values
+* Fixed Bug #14399: Fixed multiple bugs in Net_URL2 (Missing setOption value, unused properties, etc.)
+   </notes>
+   </release>
+   <release>
+    <version>
+     <release>0.3.1</release>
+     <api>0.3.0</api>
+    </version>
+    <stability>
+     <release>beta</release>
+     <api>beta</api>
+    </stability>
+    <date>2011-02-22</date>
+    <license>BSD</license>
+    <notes>
+* BC break: Removed setOption() to avoid undefined behaviour (bug #16674)
+* Fixed Bug #16854: Invalid package.xml making it impossible to install with Pyrus
+* Fixed Bug #16651: Port may be an empty string
+* Fixed Bug #16653: Don't make OPTION_SEPARATOR_(IN|OUT)PUT default to arg_separator.(in|out)put
+   </notes>
+   </release>
+   <release>
+    <version>
+     <release>0.3.0</release>
+     <api>0.3.0</api>
+    </version>
+    <stability>
+     <release>beta</release>
+     <api>beta</api>
+    </stability>
+    <date>2009-09-05</date>
+    <license>BSD</license>
+    <notes>
+* Fixed #14399 (Errors in URL parsing (items #1 and #3))
+* Fixed #14735 (Encode query string values)
+* Fixed #15546 (Add adding __toString())
+* Fixed #15367 (Use RFC 3986-compliant version of rawurlencode() in PHP &lt; 5.2)
+* Fixed #14289 (Add __get() and __set())
+   </notes>
+   </release>
+   <release>
+    <version>
+     <release>0.2.0</release>
+     <api>0.2.0</api>
+    </version>
+    <stability>
+     <release>beta</release>
+     <api>beta</api>
+    </stability>
+    <date>2008-06-18</date>
+    <license>BSD</license>
+    <notes>
+Major rewrite to comply with RFC3986 (bug 11574).
+   Much better support for resolving relative URLs.
+   WARNING: Method and property names has changed to reflect the terminology used in the RFC - THIS RELEASE IS NOT BACKWARDS COMPATIBLE WITH VERSION 0.1.0.
+   </notes>
+   </release>
+   <release>
+    <version>
+     <release>0.1.0</release>
+     <api>0.1.0</api>
+    </version>
+    <stability>
+     <release>beta</release>
+     <api>beta</api>
+    </stability>
+    <date>2007-05-08</date>
+    <license>BSD</license>
+    <notes>
+Convert to PHP5 only. PHP4 users should continue with version 1.0.15
+   </notes>
+   </release>
+  </changelog>
+ </phprelease>
+</package>
