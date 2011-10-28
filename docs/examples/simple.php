@@ -1,7 +1,6 @@
 <?php
 ini_set('display_errors', true);
-chdir(dirname(dirname(dirname(__FILE__))));
-
+set_include_path(dirname(dirname(__DIR__)).'/src'.PATH_SEPARATOR.dirname(dirname(__DIR__)).'/vendor/php');
 require_once 'SimpleCAS/Autoload.php';
 require_once 'HTTP/Request2.php';
 
