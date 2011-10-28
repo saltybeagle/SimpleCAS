@@ -42,11 +42,6 @@
  */
 
 /**
- * Base class for exceptions in PEAR
- */
-require_once 'PEAR/Exception.php';
-
-/**
  * Base exception class for HTTP_Request2 package
  *
  * @category   HTTP
@@ -54,7 +49,7 @@ require_once 'PEAR/Exception.php';
  * @version    Release: 2.0.0
  * @link       http://pear.php.net/pepr/pepr-proposal-show.php?id=132
  */
-class HTTP_Request2_Exception extends PEAR_Exception
+class HTTP_Request2_Exception extends Exception
 {
     /** An invalid argument was passed to a method */
     const INVALID_ARGUMENT   = 1;
