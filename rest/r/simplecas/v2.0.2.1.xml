@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+ <p xlink:href="rest/p/simplecas">SimpleCAS</p>
+ <c>simplecas.googlecode.com/svn</c>
+ <v>0.2.1</v>
+ <a>0.2.0</a>
+ <mp>5.2.5</mp>
+ <st>alpha</st>
+ <l>BSD License</l>
+ <m>brett.bieber</m>
+ <s>A PHP5 library for CAS Authentication.</s>
+ <d>This package is a PHP5 only library for identifying users
+in a JA-SIG CAS secured environment.</d>
+ <da>2009-02-12 12:06:22</da>
+ <n>
+* Explicitly call __toString() for PHP 5.1 compatibility. [jthiltges]
+* Add Zend_Auth_Adapter_SimpleCAS to the examples. [jthiltges]
+ </n>
+ <f>7030</f>
+ <g>http://simplecas.googlecode.com/svn/get/SimpleCAS-0.2.1</g>
+ <x xlink:href="package.0.2.1.xml"/>
+</r>

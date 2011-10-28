@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xmlns="http://pear.php.net/dtd/rest.release2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release2 http://pear.php.net/dtd/rest.release2.xsd">
+ <p xlink:href="rest/p/simplecas">SimpleCAS</p>
+ <c>simplecas.googlecode.com/svn</c>
+ <v>0.5.0</v>
+ <a>0.5.0</a>
+ <mp>5.2.5</mp>
+ <st>beta</st>
+ <l>BSD License</l>
+ <m>saltybeagle</m>
+ <s>A PHP5 library for CAS Authentication.</s>
+ <d>This package is a PHP5 only library for identifying users
+in a JA-SIG CAS secured environment.</d>
+ <da>2010-01-27 10:02:35</da>
+ <n>
+* Allow service url to be customized with SimpleCAS::setURL($url); [ericrasmussen1]
+ </n>
+ <f>7342</f>
+ <g>http://simplecas.googlecode.com/svn/get/SimpleCAS-0.5.0</g>
+ <x xlink:href="package.0.5.0.xml"/>
+</r>

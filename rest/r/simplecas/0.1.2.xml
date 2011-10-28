@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<r xmlns="http://pear.php.net/dtd/rest.release" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.release http://pear.php.net/dtd/rest.release.xsd">
+ <p xlink:href="rest/p/simplecas">SimpleCAS</p>
+ <c>simplecas.googlecode.com/svn</c>
+ <v>0.1.2</v>
+ <st>alpha</st>
+ <l>BSD License</l>
+ <m>brett.bieber</m>
+ <s>A PHP5 library for CAS Authentication.</s>
+ <d>This package is a PHP5 only library for identifying users
+in a JA-SIG CAS secured environment.</d>
+ <da>2009-02-05 10:59:33</da>
+ <n>
+* Update PEAR dependency to 1.5.4
+* Match case for variables (jthiltges)
+* In CAS v2 validateTicket, typecast successful return value to string (jthiltges)
+ </n>
+ <f>5919</f>
+ <g>http://simplecas.googlecode.com/svn/get/SimpleCAS-0.1.2</g>
+ <x xlink:href="package.0.1.2.xml"/>
+</r>
