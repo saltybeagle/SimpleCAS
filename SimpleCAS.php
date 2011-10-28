@@ -80,7 +80,7 @@ class SimpleCAS
         $this->protocol = $protocol;
         
         if ($this->protocol instanceof SimpleCAS_SingleSignOut
-            && isset($_POST)) {
+            && !empty($_POST)) {
             if ($ticket = $this->protocol->validateLogoutRequest($_POST)) {
                 $this->logout($ticket);
             }
