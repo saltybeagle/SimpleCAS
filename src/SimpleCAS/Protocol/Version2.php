@@ -25,8 +25,9 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
      */
     function getValidationURL($ticket, $service, $pgtUrl = null)
     {
-        return 'https://' . $this->hostname . '/'
-                          . $this->uri . '/serviceValidate?'
+        return 'https://' . $this->hostname
+                          . ":".$this->port
+                          . '/'.$this->uri . '/serviceValidate?'
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket
                           . '&pgtUrl=' . urlencode($pgtUrl);
