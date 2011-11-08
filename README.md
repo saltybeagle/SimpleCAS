@@ -1,19 +1,20 @@
-=SimpleCAS PHP 5 CAS Client=
+# SimpleCAS PHP 5 CAS Client
 
-This is a PHP 5 client library for [http://www.ja-sig.org/products/cas/ JA-SIG Central Authentication Service (CAS)].
+This is a PHP 5 client library for [JA-SIG Central Authentication Service (CAS)](http://www.ja-sig.org/products/cas/).
 
 Compatible with servers using version 1 or 2 of the CAS protocol.
 
 Install with:
-{{{
+```
 pear channel-discover simplecas.googlecode.com/svn
 pear install simplecas/SimpleCAS-alpha
-}}}
+```
 
-Manually install by downloading the latest release and extracting the files, along with [http://pear.php.net/package/HTTP_Request2/ HTTP_Request2] from PEAR.
+Manually install by downloading the latest release and extracting the files,
+along with [HTTP_Request2](http://pear.php.net/package/HTTP_Request2/) from PEAR.
 
 Quick Example:
-{{{
+```php
 <?php
 
 require_once 'SimpleCAS/Autoload.php';
@@ -37,4 +38,4 @@ if ($client->isAuthenticated()) {
           <a href="?logout">Logout</a>';
 }
 ?>
-}}}
+```
