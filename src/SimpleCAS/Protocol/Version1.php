@@ -46,8 +46,9 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
      */
     function getValidationURL($ticket, $service)
     {
-        return 'https://' . $this->hostname . '/'
-                          . $this->uri . '/validate?'
+        return 'https://' . $this->hostname
+                          . ':'.$this->port
+                          . '/'.$this->uri . '/validate?'
                           . 'service=' . urlencode($service)
                           . '&ticket=' . $ticket;
     }
@@ -62,6 +63,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
     function getLoginURL($service)
     {
         return 'https://' . $this->hostname
+                          . ':'.$this->port
                           . '/'.$this->uri
                           . '/login?service='
                           . urlencode($service);
@@ -81,6 +83,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
         }
         
         return 'https://' . $this->hostname
+                          . ':'.$this->port
                           . '/'.$this->uri
                           . '/logout'
                           . $service;
