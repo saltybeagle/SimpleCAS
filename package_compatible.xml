@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>SimpleCAS</name>
+ <channel>saltybeagle.github.com/SimpleCAS</channel>
+ <date>2011-12-06</date>
+ <time>13:08:25</time>
+ <version>
+  <release>0.6.0</release>
+  <api>0.6.0</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>Feature Release:
+
+* Added support for the CAS features gateway and renew and added new [kabel]
+
+
+No API backwards compatibility changes
+</notes>
+ <contents>
+  <dir name="/">
+   <file role="php" name="php/SimpleCAS/SingleSignOut.php"/>
+   <file role="php" name="php/SimpleCAS/ProxyGranting/Storage/File.php"/>
+   <file role="php" name="php/SimpleCAS/ProxyGranting/Storage.php"/>
+   <file role="php" name="php/SimpleCAS/ProxyGranting.php"/>
+   <file role="php" name="php/SimpleCAS/Protocol/Version2/ValidationResponse.php"/>
+   <file role="php" name="php/SimpleCAS/Protocol/Version2.php"/>
+   <file role="php" name="php/SimpleCAS/Protocol/Version1.php"/>
+   <file role="php" name="php/SimpleCAS/Protocol.php"/>
+   <file role="php" name="php/SimpleCAS/Autoload.php"/>
+   <file role="php" name="php/SimpleCAS.php"/>
+   <file role="doc" name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/Zend_Auth_Adapter_SimpleCAS.php"/>
+   <file role="doc" name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple_renew.php"/>
+   <file role="doc" name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple_gateway.php"/>
+   <file role="doc" name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple.php"/>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.8</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease>
+  <filelist>
+   <install name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple.php" as="SimpleCAS/SimpleCAS/examples/examples/simple.php"/>
+   <install name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple_gateway.php" as="SimpleCAS/SimpleCAS/examples/examples/simple_gateway.php"/>
+   <install name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/simple_renew.php" as="SimpleCAS/SimpleCAS/examples/examples/simple_renew.php"/>
+   <install name="doc/saltybeagle.github.com/SimpleCAS/SimpleCAS/examples/examples/Zend_Auth_Adapter_SimpleCAS.php" as="SimpleCAS/SimpleCAS/examples/examples/Zend_Auth_Adapter_SimpleCAS.php"/>
+   <install name="php/SimpleCAS.php" as="SimpleCAS.php"/>
+   <install name="php/SimpleCAS/Autoload.php" as="SimpleCAS/Autoload.php"/>
+   <install name="php/SimpleCAS/Protocol.php" as="SimpleCAS/Protocol.php"/>
+   <install name="php/SimpleCAS/Protocol/Version1.php" as="SimpleCAS/Protocol/Version1.php"/>
+   <install name="php/SimpleCAS/Protocol/Version2.php" as="SimpleCAS/Protocol/Version2.php"/>
+   <install name="php/SimpleCAS/Protocol/Version2/ValidationResponse.php" as="SimpleCAS/Protocol/Version2/ValidationResponse.php"/>
+   <install name="php/SimpleCAS/ProxyGranting.php" as="SimpleCAS/ProxyGranting.php"/>
+   <install name="php/SimpleCAS/ProxyGranting/Storage.php" as="SimpleCAS/ProxyGranting/Storage.php"/>
+   <install name="php/SimpleCAS/ProxyGranting/Storage/File.php" as="SimpleCAS/ProxyGranting/Storage/File.php"/>
+   <install name="php/SimpleCAS/SingleSignOut.php" as="SimpleCAS/SingleSignOut.php"/>
+  </filelist>
+ </phprelease>
+</package>

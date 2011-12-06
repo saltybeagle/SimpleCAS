@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+<package version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
  <name>SimpleCAS</name>
- <channel>simplecas.googlecode.com/svn</channel>
+ <channel>saltybeagle.github.com/SimpleCAS</channel>
  <summary>A PHP5 library for CAS Authentication.</summary>
  <description>This package is a PHP5 only library for identifying users
 in a JA-SIG CAS secured environment.</description>
@@ -29,49 +29,57 @@ in a JA-SIG CAS secured environment.</description>
   <email>ericrasmussen1@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2010-01-27</date>
- <time>10:02:08</time>
+ <date>2011-12-06</date>
+ <time>13:08:25</time>
  <version>
-  <release>0.5.0</release>
-  <api>0.5.0</api>
+  <release>0.6.0</release>
+  <api>0.6.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>alpha</release>
+  <api>alpha</api>
  </stability>
  <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
- <notes>
-* Allow service url to be customized with SimpleCAS::setURL($url); [ericrasmussen1]
- </notes>
+ <notes>Feature Release:
+
+* Added support for the CAS features gateway and renew and added new [kabel]
+
+
+No API backwards compatibility changes
+</notes>
  <contents>
-  <dir baseinstalldir="/" name="/">
-   <dir name="docs">
+  <dir name="/">
+   <dir name="docs" baseinstalldir="/">
     <dir name="examples">
-     <file name="simple.php" role="doc" />
-     <file name="Zend_Auth_Adapter_SimpleCAS.php" role="doc" />
-    </dir> <!-- /docs/examples -->
-   </dir> <!-- /docs -->
-   <dir name="SimpleCAS">
-    <dir name="Protocol">
-     <dir name="Version2">
-      <file name="ValidationResponse.php" role="php" />
-     </dir> <!-- /SimpleCAS/Protocol/Version2 -->
-     <file name="Version1.php" role="php" />
-     <file name="Version2.php" role="php" />
-    </dir> <!-- /SimpleCAS/Protocol -->
-    <dir name="ProxyGranting">
-     <dir name="Storage">
-      <file name="File.php" role="php" />
-     </dir> <!-- /SimpleCAS/ProxyGranting/Storage -->
-     <file name="Storage.php" role="php" />
-    </dir> <!-- /SimpleCAS/ProxyGranting -->
-    <file name="Autoload.php" role="php" />
-    <file name="Protocol.php" role="php" />
-    <file name="ProxyGranting.php" role="php" />
-    <file name="SingleSignOut.php" role="php" />
-   </dir> <!-- /SimpleCAS -->
-   <file name="SimpleCAS.php" role="php" />
-  </dir> <!-- / -->
+     <file role="doc" name="simple.php"/>
+     <file role="doc" name="simple_gateway.php"/>
+     <file role="doc" name="simple_renew.php"/>
+     <file role="doc" name="Zend_Auth_Adapter_SimpleCAS.php"/>
+    </dir>
+   </dir>
+   <dir name="src" baseinstalldir="/">
+    <dir name="SimpleCAS">
+     <dir name="Protocol">
+      <dir name="Version2">
+       <file role="php" name="ValidationResponse.php"/>
+      </dir>
+      <file role="php" name="Version1.php"/>
+      <file role="php" name="Version2.php"/>
+     </dir>
+     <dir name="ProxyGranting">
+      <dir name="Storage">
+       <file role="php" name="File.php"/>
+      </dir>
+      <file role="php" name="Storage.php"/>
+     </dir>
+     <file role="php" name="Autoload.php"/>
+     <file role="php" name="Protocol.php"/>
+     <file role="php" name="ProxyGranting.php"/>
+     <file role="php" name="SingleSignOut.php"/>
+    </dir>
+    <file role="php" name="SimpleCAS.php"/>
+   </dir>
+  </dir>
  </contents>
  <dependencies>
   <required>
@@ -88,7 +96,7 @@ in a JA-SIG CAS secured environment.</description>
    </package>
   </required>
  </dependencies>
- <phprelease />
+ <phprelease/>
  <changelog>
   <release>
    <version>
@@ -151,7 +159,7 @@ First Release.
    <license uri="http://www1.unl.edu/wdn/wiki/Software_License">BSD License</license>
    <notes>
 * Allow setting HTTP_Request2 object so configuration can be set.
-  $server-&gt;getRequest()-&gt;setConfig(&apos;ssl_verify_peer&apos;, false);
+  $server-&gt;getRequest()-&gt;setConfig('ssl_verify_peer', false);
 * Add $server-&gt;getRequest(), $server-&gt;setRequest(HTTP_Request2 $http_request)
 Change interface for server to abstract class.
    </notes>
