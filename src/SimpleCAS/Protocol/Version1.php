@@ -1,10 +1,10 @@
 <?php
 /**
  * Class representing a CAS server which supports the CAS1 protocol.
- * 
+ *
  * PHP version 5
- * 
- * @category  Authentication 
+ *
+ * @category  Authentication
  * @package   SimpleCAS
  * @author    Brett Bieber <brett.bieber@gmail.com>
  * @copyright 2008 Regents of the University of Nebraska
@@ -14,8 +14,6 @@
 class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
 {
     const VERSION = '1.0';
-
-    protected $request;
 
     /**
      * Construct a new SimpleCAS server object.
@@ -46,11 +44,17 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
      */
     function getValidationURL($ticket, $service)
     {
+        $options = '';
+        if (isset($this->renew)) {
+            $options = '&renew=true';
+        }
+
         return 'https://' . $this->hostname
                           . ':'.$this->port
                           . '/'.$this->uri . '/validate?'
                           . 'service=' . urlencode($service)
-                          . '&ticket=' . $ticket;
+                          . '&ticket=' . $ticket
+                          . $options;
     }
 
     /**
@@ -62,11 +66,19 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
      */
     function getLoginURL($service)
     {
+        $options = '';
+        if (isset($this->gateway)) {
+            $options = '&gateway=true';
+        } elseif (isset($this->renew)) {
+            $options = '&renew=true';
+        }
+
         return 'https://' . $this->hostname
                           . ':'.$this->port
                           . '/'.$this->uri
                           . '/login?service='
-                          . urlencode($service);
+                          . urlencode($service)
+                          . $options;
     }
 
     /**
@@ -81,7 +93,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
         if (isset($service)) {
             $service = ($this->logoutServiceRedirect ? '?service=' : '?url=').urlencode($service);
         }
-        
+
         return 'https://' . $this->hostname
                           . ':'.$this->port
                           . '/'.$this->uri
@@ -94,7 +106,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
      *
      * @param string $ticket  Ticket given by the CAS Server
      * @param string $service Service requesting authentication
-     * 
+     *
      * @return false|string False on failure, user name on success.
      */
     function validateTicket($ticket, $service)
