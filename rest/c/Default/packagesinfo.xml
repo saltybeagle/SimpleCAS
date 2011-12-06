@@ -3,7 +3,7 @@
  <pi>
   <p>
    <n>SimpleCAS</n>
-   <c>simplecas.googlecode.com/svn</c>
+   <c>saltybeagle.github.com/SimpleCAS</c>
    <ca xmlns:xlink="rest/c/Default" xlink:href="rest/c/Default">Default</ca>
    <l>BSD License</l>
    <s>A PHP5 library for CAS Authentication.</s>
@@ -12,6 +12,10 @@ in a JA-SIG CAS secured environment.</d>
    <r xmlns="http://pear.php.net/dtd/rest.package" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://pear.php.net/dtd/rest.package http://pear.php.net/dtd/rest.package.xsd"/>
   </p>
   <a>
+   <r>
+    <v>0.6.0</v>
+    <s>alpha</s>
+   </r>
    <r>
     <v>0.5.0</v>
     <s>beta</s>
@@ -54,7 +58,7 @@ in a JA-SIG CAS secured environment.</d>
    </r>
   </a>
   <deps>
-   <v>0.5.0</v>
+   <v>0.6.0</v>
    <d>a:1:{s:8:&quot;required&quot;;a:3:{s:3:&quot;php&quot;;a:1:{s:3:&quot;min&quot;;s:5:&quot;5.2.5&quot;;}s:13:&quot;pearinstaller&quot;;a:1:{s:3:&quot;min&quot;;s:5:&quot;1.5.4&quot;;}s:7:&quot;package&quot;;a:3:{s:4:&quot;name&quot;;s:13:&quot;HTTP_Request2&quot;;s:7:&quot;channel&quot;;s:12:&quot;pear.php.net&quot;;s:3:&quot;min&quot;;s:5:&quot;0.1.0&quot;;}}}</d>
   </deps>
  </pi>
