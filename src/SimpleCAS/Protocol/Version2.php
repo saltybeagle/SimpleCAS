@@ -20,23 +20,24 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
      *
      * @param string $ticket  Ticket to validate
      * @param string $service URL to the service requesting authentication
+     * @param string $pgtUrl The URL of the proxy callback
      *
      * @return string
      */
     function getValidationURL($ticket, $service, $pgtUrl = null)
     {
-        $options = '';
+        $options = array(
+            'service' => $service,
+            'ticket' => $ticket,
+        );
+        if ($pgtUrl) {
+            $options['pgtUrl'] = $pgtUrl;
+        }
         if (isset($this->renew)) {
-            $options = '&renew=true';
+            $options['renew'] = 'true';
         }
 
-        return 'https://' . $this->hostname
-                          . ":".$this->port
-                          . '/'.$this->uri . '/serviceValidate?'
-                          . 'service=' . urlencode($service)
-                          . '&ticket=' . $ticket
-                          . '&pgtUrl=' . urlencode($pgtUrl)
-                          . $options;
+        return $this->_buildCASURL('serviceValidate', $options);
     }
 
     /**
