@@ -408,8 +408,6 @@ class SimpleCAS
      * url.
      *
      * @param string $url URL to provide the client on logout.
-     *
-     * @return void
      */
     public function logout($url = '')
     {
@@ -417,6 +415,6 @@ class SimpleCAS
         if (empty($url)) {
             $url = self::getURL();
         }
-        $this->redirect($this->protocol->getLogoutURL($url));
+        self::redirect($this->protocol->getLogoutURL($url));
     }
 }
