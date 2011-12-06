@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <channel version="1.0" xmlns="http://pear.php.net/channel-1.0">
- <name>simplecas.googlecode.com/svn</name>
+ <name>saltybeagle.github.com/SimpleCAS</name>
  <suggestedalias>simplecas</suggestedalias>
  <summary>simplecas</summary>
  <servers>
   <primary>
    <rest>
-    <baseurl type="REST1.0">http://simplecas.googlecode.com/svn/rest/</baseurl>
-    <baseurl type="REST1.1">http://simplecas.googlecode.com/svn/rest/</baseurl>
-    <baseurl type="REST1.3">http://simplecas.googlecode.com/svn/rest/</baseurl>
+    <baseurl type="REST1.0">http://saltybeagle.github.com/SimpleCAS/rest/</baseurl>
+    <baseurl type="REST1.1">http://saltybeagle.github.com/SimpleCAS/rest/</baseurl>
+    <baseurl type="REST1.3">http://saltybeagle.github.com/SimpleCAS/rest/</baseurl>
    </rest>
   </primary>
  </servers>
