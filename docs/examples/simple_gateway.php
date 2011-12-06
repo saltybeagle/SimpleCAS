@@ -12,16 +12,17 @@ $protocol = new SimpleCAS_Protocol_Version2($options);
 $protocol->getRequest()->setConfig('ssl_verify_peer', false);
 
 $client = SimpleCAS::client($protocol);
-$client->forceAuthentication();
-
-if (isset($_GET['logout'])) {
-	$client->logout();
-}
-
-if ($client->isAuthenticated()) {
-    echo '<h1>Authentication Successful!</h1>';
-    echo '<p>The user\'s login is '.$client->getUsername().'</p>';
-}
+$client->gatewayAuthentication();
 ?>
-<a href="simple_renew.php">Super Sensitive Page</a>
-<a href="?logout">Logout</a>
+<?php if ($client->isAuthenticated()): ?>
+    <?php if (isset($_GET['logout'])) {
+        $client->logout();
+    } ?>
+    <h1>Authentication Successful!</h1>
+    <p>The user's login is <?php echo $client->getUsername() ?></p>
+    <p>View the <a href="simple.php">authenticated home page</a></p>
+    <a href="?logout">Logout</a>
+<?php else: ?>
+    <h1>NOT Authenticated</h1>
+    <p><a href="simple.php">Login</a> to see more</p>
+<?php endif; ?>

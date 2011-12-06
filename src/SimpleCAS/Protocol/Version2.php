@@ -14,25 +14,32 @@
 class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements SimpleCAS_SingleSignOut, SimpleCAS_ProxyGranting
 {
     const VERSION = '2.0';
-    
+
     /**
      * Returns the URL used to validate a ticket.
      *
      * @param string $ticket  Ticket to validate
      * @param string $service URL to the service requesting authentication
+     * @param string $pgtUrl The URL of the proxy callback
      *
      * @return string
      */
     function getValidationURL($ticket, $service, $pgtUrl = null)
     {
-        return 'https://' . $this->hostname
-                          . ":".$this->port
-                          . '/'.$this->uri . '/serviceValidate?'
-                          . 'service=' . urlencode($service)
-                          . '&ticket=' . $ticket
-                          . '&pgtUrl=' . urlencode($pgtUrl);
+        $options = array(
+            'service' => $service,
+            'ticket' => $ticket,
+        );
+        if ($pgtUrl) {
+            $options['pgtUrl'] = $pgtUrl;
+        }
+        if (isset($this->renew)) {
+            $options['renew'] = 'true';
+        }
+
+        return $this->_buildCASURL('serviceValidate', $options);
     }
-    
+
     /**
      * Function to validate a ticket and service combination.
      *
@@ -44,20 +51,20 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
     function validateTicket($ticket, $service)
     {
         $validation_url = $this->getValidationURL($ticket, $service);
-        
+
         $http_request = clone $this->getRequest();
-        
+
         $defaultClass = SimpleCAS_Protocol::DEFAULT_REQUEST_CLASS;
         if ($http_request instanceof $defaultClass) {
             $http_request->setURL($validation_url);
-            
+
             $response = $http_request->send();
         } else {
             $http_request->setUri($validation_url);
-            
+
             $response = $http_request->request();
         }
-        
+
         if ($response->getStatus() == 200) {
             $validationResponse = new SimpleCAS_Protocol_Version2_ValidationResponse($response->getBody());
             if ($validationResponse->authenticationSuccess()) {
@@ -66,7 +73,7 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
         }
         return false;
     }
-    
+
     /**
      * Validates a single sign out logout request.
      *
@@ -81,12 +88,12 @@ class SimpleCAS_Protocol_Version2 extends SimpleCAS_Protocol_Version1 implements
         }
         return false;
     }
-    
+
     function getProxyTicket()
     {
         throw new Exception('not implemented');
     }
-    
+
     function validateProxyTicket($ticket)
     {
         throw new Exception('not implemented');
