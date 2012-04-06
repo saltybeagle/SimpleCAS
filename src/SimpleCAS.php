@@ -112,25 +112,34 @@ class SimpleCAS
         if (!empty(self::$url)) {
             return self::$url;
         }
-        if (isset($_SERVER['HTTPS'])
-                && !empty($_SERVER['HTTPS'])
-                && $_SERVER['HTTPS'] == 'on') {
-            $protocol = 'https';
+
+        if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+            $scheme = 'https';
         } else {
-            $protocol = 'http';
+            $scheme = 'http';
         }
 
-        $url = $protocol.'://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+        $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null;
+        if (empty($host)) {
+            $host = $_SERVER['SERVER_NAME'];
+            $port = $_SERVER['SERVER_PORT'];
 
-        $replacements = array('/\?logout/'        => '',
+            if (($scheme == 'http' && $port != 80) || ($scheme == 'https' && $port != 443)) {
+                $host .= ':' . $port;
+            }
+        }
+
+        $url = $scheme . '://' . $host . $_SERVER['REQUEST_URI'];
+
+        $replacements = array(
+                '/\?logout/'        => '',
                 '/&ticket=[^&]*/'   => '',
                 '/\?ticket=[^&;]*/' => '?',
                 '/\?%26/'           => '?',
                 '/\?&/'             => '?',
-                '/\?$/'             => '');
-
-        $url = preg_replace(array_keys($replacements),
-                array_values($replacements), $url);
+                '/\?$/'             => ''
+        );
+        $url = preg_replace(array_keys($replacements), array_values($replacements), $url);
 
         return $url;
     }
@@ -204,6 +213,26 @@ class SimpleCAS
         }
 
         return $_SESSION[$this->_sessionNamespace];
+    }
+
+    /**
+     * Returns the session namespace name (the offset into the session)
+     *
+     * @return string
+     */
+    public function getSessionNamespace()
+    {
+        return $this->_sessionNamespace;
+    }
+
+    /**
+     * Returns the used protocol object
+     *
+     * @return SimpleCAS_Protocol
+     */
+    public function getProtocol()
+    {
+        return $this->protocol;
     }
 
     /**

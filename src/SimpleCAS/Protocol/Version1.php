@@ -51,7 +51,7 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
     {
         $url = "https://{$this->hostname}";
 
-        if (isset($this->port)) {
+        if (isset($this->port) && $this->port != 443) {
             $url .= ":{$this->port}";
         }
 
