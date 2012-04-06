@@ -207,6 +207,26 @@ class SimpleCAS
     }
 
     /**
+     * Returns the session namespace name (the offset into the session)
+     *
+     * @return string
+     */
+    public function getSessionNamespace()
+    {
+        return $this->_sessionNamespace;
+    }
+
+    /**
+     * Returns the used protocol object
+     *
+     * @return SimpleCAS_Protocol
+     */
+    public function getProtocol()
+    {
+        return $this->protocol;
+    }
+
+    /**
      * Gets the ticket to be checked for authentication
      *
      * @return string
