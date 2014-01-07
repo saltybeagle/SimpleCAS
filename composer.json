@@ -8,5 +8,8 @@
     ],
     "require": {
         "pear-pear/HTTP_Request2": "*"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
     }
 }
