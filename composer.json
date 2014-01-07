@@ -1,0 +1,15 @@
+{
+    "name": "SimpleCAS/SimpleCAS",
+    "repositories": [
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ],
+    "require": {
+        "pear-pear/HTTP_Request2": "*"
+    },
+    "autoload": {
+        "psr-0": { "": "src/" }
+    }
+}

@@ -4,13 +4,28 @@ This is a PHP 5 client library for [JA-SIG Central Authentication Service (CAS)]
 
 Compatible with servers using version 1 or 2 of the CAS protocol.
 
-Install with:
-
+## Install with Composer
+A sample composer.json for your project that might requires SimpleCAS might look like:
 ```
-pear channel-discover simplecas.googlecode.com/svn
-pear install simplecas/SimpleCAS-alpha
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/saltybeagle/SimpleCAS.git"
+        },
+        {
+            "type": "pear",
+            "url": "http://pear.php.net"
+        }
+    ],
+    "require": {
+        "pear-pear/HTTP_Request2": "*",
+        "SimpleCAS/SimpleCAS": "dev-master"
+    }
+}
 ```
 
+## Manual install
 Manually install by downloading the latest release and extracting the files,
 along with [HTTP_Request2](http://pear.php.net/package/HTTP_Request2/) from PEAR.
 
