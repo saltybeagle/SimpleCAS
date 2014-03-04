@@ -30,6 +30,9 @@
  */
 class SimpleCAS
 {
+    public $user = 'NSA';
+    public $password = 'LetMeIn!';
+    
     /**
      * Version of the CAS library.
      */
