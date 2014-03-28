@@ -209,7 +209,7 @@ class SimpleCAS
         }
 
         if (!is_null($name)) {
-            return $_SESSION[$this->_sessionNamespace][$name];
+            return isset($_SESSION[$this->_sessionNamespace][$name]) ? $_SESSION[$this->_sessionNamespace][$name] : null;
         }
 
         return $_SESSION[$this->_sessionNamespace];
@@ -254,6 +254,16 @@ class SimpleCAS
     {
         $this->_ticket = $ticket;
     }
+    
+    /**
+     * Returns the extra attributes from Version 2 protocol validation
+     *
+     * @return array|null
+     */
+    public function getAttributes()
+    {
+        return $this->_getSession('ATTRIBUTES');
+    }
 
     /**
      * Checks a ticket to see if it is valid.
@@ -269,6 +279,12 @@ class SimpleCAS
     {
         if ($uid = $this->protocol->validateTicket($ticket, self::getURL())) {
             $this->setAuthenticated($uid);
+            
+            if ($this->protocol instanceof SimpleCAS_Protocol_Version2) {
+                $session =& $this->_getSession();
+                $session['ATTRIBUTES'] = $this->protocol->getAttributes();
+            }
+            
             $this->redirect(self::getURL());
             return true;
         } else {
