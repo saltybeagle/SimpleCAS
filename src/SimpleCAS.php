@@ -216,7 +216,11 @@ class SimpleCAS
         }
 
         if (!is_null($name)) {
-            return isset($_SESSION[$this->_sessionNamespace][$name]) ? $_SESSION[$this->_sessionNamespace][$name] : null;
+            $value = null;
+            if (isset($_SESSION[$this->_sessionNamespace][$name])) {
+                $value = $_SESSION[$this->_sessionNamespace][$name];
+            }
+            return $value;
         }
 
         return $_SESSION[$this->_sessionNamespace];
