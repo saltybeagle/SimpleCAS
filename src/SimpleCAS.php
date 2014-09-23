@@ -84,6 +84,8 @@ class SimpleCAS
      */
     protected $_sessionNamespace = '__SIMPLECAS';
 
+    protected $sessionMap;
+
     /**
      * Singleton interface, returns SimpleCAS object.
      *
@@ -182,13 +184,15 @@ class SimpleCAS
      */
     private function __construct(SimpleCAS_Protocol $protocol)
     {
+        if (session_id() == '') {
+            session_start();
+        }
+        
         $this->protocol = $protocol;
+        $this->sessionMap = new SimpleCAS_SLOMap();
 
-        if ($this->protocol instanceof SimpleCAS_SingleSignOut
-            && !empty($_POST)) {
-            if ($ticket = $this->protocol->validateLogoutRequest($_POST)) {
-                $this->logout($ticket);
-            }
+        if ($slo_ticket = $this->sessionMap->validateLogoutRequest($_POST)) {
+            $this->sessionMap->logout($slo_ticket);
         }
 
         if (isset($_GET['ticket'])) {
@@ -242,7 +246,16 @@ class SimpleCAS
      */
     public function getTicket()
     {
-        return $this->_ticket;
+        if (!empty($this->_ticket)) {
+            return $this->_ticket;
+        }
+
+        $ticket = $this->_getSession('TICKET');
+        if (!is_array($ticket)) {
+            return $ticket;
+        }
+        
+        return null;
     }
 
     /**
@@ -286,12 +299,13 @@ class SimpleCAS
     protected function setAuthenticated($uid)
     {
         $session =& $this->_getSession();
-        $session['TICKET'] = true;
+        $session['TICKET'] = $this->getTicket();
         $session['UID']    = $uid;
         if (isset($this->protocol->renew)) {
             $session['FROM_RENEW'] = true;
         }
         $this->_authenticated = true;
+        $this->sessionMap->set($this->getTicket(), session_id());
     }
 
     /**
