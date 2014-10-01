@@ -6,8 +6,8 @@
  *
  * @category  Authentication
  * @package   SimpleCAS
- * @author    Brett Bieber <brett.bieber@gmail.com>
- * @copyright 2008 Regents of the University of Nebraska
+ * @author    Michael Fairchild <mfairchild365@gmail.com>
+ * @copyright 2014 Regents of the University of Nebraska
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
