@@ -189,12 +189,22 @@ class SimpleCAS
         if (isset($_GET['ticket'])) {
             $this->setTicket($_GET['ticket']);
         }
+        
+        
     }
     
     public function handleSingleLogOut()
     {
         if ($slo_ticket = $this->protocol->getSessionMap()->validateLogoutRequest($_POST)) {
-            $this->protocol->getSessionMap()->logout($slo_ticket);
+            file_put_contents('/tmp/slo.log', date('Y-m-d H:i:s') . ' -- Handling slo: ' . $_POST['logoutRequest'] . PHP_EOL, FILE_APPEND);
+            $result = $this->protocol->getSessionMap()->logout($slo_ticket);
+            
+            if ($result) {
+                file_put_contents('/tmp/slo.log', date('Y-m-d H:i:s') . ' -- SUCCESS' . PHP_EOL, FILE_APPEND);
+            } else {
+                file_put_contents('/tmp/slo.log', date('Y-m-d H:i:s') . ' -- FAILED' . PHP_EOL, FILE_APPEND);
+            }
+            
             exit();
         }
     }

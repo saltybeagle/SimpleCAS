@@ -41,10 +41,15 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
             return false;
         }
 
-        $current_session_id = session_id();
+        if (session_id()) {
+            //If a current session exists, save it and close it.
+            session_commit();
+        }
+
+        //Start the session for this ticket.
         session_id($session_id);
+        session_start();
         $result = session_destroy();
-        session_id($current_session_id);
 
         $this->loadMapFile();
         unset($this->data[$cas_ticket]);
