@@ -23,7 +23,7 @@ class SimpleCAS_SLOMap implements SimpleCAS_SingleSignOut
             $this->tmp_directory = sys_get_temp_dir();
         }
         if (!$file_name) {
-            $this->file_name     = 'simplecas_map_' . md5(SimpleCas::getURL())  . '.php.ser';
+            $this->file_name     = 'simpleCAS_map_' . md5(SimpleCas::getURL())  . '.php.ser';
         }
     }
 
