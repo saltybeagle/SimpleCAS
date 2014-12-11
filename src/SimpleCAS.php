@@ -190,7 +190,7 @@ class SimpleCAS
             $this->setTicket($_GET['ticket']);
         }
         
-        
+        $this->handleSingleLogOut();
     }
     
     public function handleSingleLogOut()
