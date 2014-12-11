@@ -20,6 +20,7 @@ abstract class SimpleCAS_Protocol
 
     protected $requestClass;
     protected $request;
+    protected $sessionMap;
 
     /**
      * Option to request the CAS server redirect after processing a logout URL.
@@ -111,5 +112,29 @@ abstract class SimpleCAS_Protocol
     function setLogoutServiceRedirect($logoutServiceRedirect)
     {
         $this->logoutServiceRedirect = (boolean) $logoutServiceRedirect;
+    }
+
+    /**
+     * Set the session map.  The session map is used for single log out.
+     * 
+     * @param $sessionMap
+     */
+    function setSessionMap($sessionMap)
+    {
+        $this->sessionMap = $sessionMap;
+    }
+
+    /**
+     * Get the sessions map.  If one is not set yet, it will return the default SimpleCAS_SLOMap
+     * 
+     * @return mixed
+     */
+    function getSessionMap()
+    {
+        if (!$this->sessionMap) {
+            $this->setSessionMap(new SimpleCAS_SLOMap());
+        }
+        
+        return $this->sessionMap;
     }
 }

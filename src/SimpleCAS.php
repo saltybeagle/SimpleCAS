@@ -184,19 +184,18 @@ class SimpleCAS
      */
     private function __construct(SimpleCAS_Protocol $protocol)
     {
-        if (session_id() == '') {
-            session_start();
-        }
-        
         $this->protocol = $protocol;
-        $this->sessionMap = new SimpleCAS_SLOMap();
-
-        if ($slo_ticket = $this->sessionMap->validateLogoutRequest($_POST)) {
-            $this->sessionMap->logout($slo_ticket);
-        }
 
         if (isset($_GET['ticket'])) {
             $this->setTicket($_GET['ticket']);
+        }
+    }
+    
+    public function handleSingleLogOut()
+    {
+        if ($slo_ticket = $this->protocol->getSessionMap()->validateLogoutRequest($_POST)) {
+            $this->protocol->getSessionMap()->logout($slo_ticket);
+            exit();
         }
     }
 
@@ -305,7 +304,7 @@ class SimpleCAS
             $session['FROM_RENEW'] = true;
         }
         $this->_authenticated = true;
-        $this->sessionMap->set($this->getTicket(), session_id());
+        $this->protocol->getSessionMap()->set($this->getTicket(), session_id());
     }
 
     /**
