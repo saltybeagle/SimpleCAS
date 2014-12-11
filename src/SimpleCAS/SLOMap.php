@@ -11,7 +11,7 @@
  * @license   http://www1.unl.edu/wdn/wiki/Software_License BSD License
  * @link      http://code.google.com/p/simplecas/
  */
-class SimpleCAS_SLOMap implements SimpleCAS_SingleSignOut
+class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
 {
     protected $data          = array();
     protected $file_name     = false;
@@ -105,61 +105,5 @@ class SimpleCAS_SLOMap implements SimpleCAS_SingleSignOut
         $this->saveMapFile();
 
         return true;
-    }
-
-    /**
-     * @param $xml - the XML from the single sign out request
-     * @return bool|string - the CAS ticket to sign out, false if no ticket was found.
-     */
-    protected function getTicket($xml)
-    {
-        $xml = new \SimpleXMLElement($xml);
-        $element = $xml->xpath('//samlp:SessionIndex');
-        
-        if (empty($element)) {
-            return false;
-        }
-        
-        return (string)$element[0];
-    }
-
-    /**
-     * Determines if the posted request is a valid single sign out request.
-     *
-     * @param mixed $post $_POST data sent to the service.
-     *
-     * @return bool
-     */
-    public function validateLogoutRequest($post)
-    {
-        if (isset($_POST['logoutRequest']) && ($ticket = $this->getTicket($_POST['logoutRequest']))) {
-            return $ticket;
-        }
-        
-        return false;
-    }
-
-    /**
-     * Log out a session by the single log out ticket.
-     * 
-     * @param $cas_ticket
-     * @return bool
-     */
-    public function logout($cas_ticket)
-    {
-        if (!$session_id = $this->get($cas_ticket)) {
-            return false;
-        }
-        
-        $current_session_id = session_id();
-        session_id($session_id);
-        $result = session_destroy();
-        session_id($current_session_id);
-        
-        $this->loadMapFile();
-        unset($this->data[$cas_ticket]);
-        $this->saveMapFile();
-        
-        return $result;
     }
 }
