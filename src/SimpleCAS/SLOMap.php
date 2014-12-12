@@ -80,7 +80,7 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
      * @param $cas_ticket
      * @return bool
      */
-    protected function get($cas_ticket)
+    public function get($cas_ticket)
     {
         $this->loadMapFile();
         
