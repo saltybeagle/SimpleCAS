@@ -12,6 +12,7 @@ $protocol = new SimpleCAS_Protocol_Version2($options);
 $protocol->getRequest()->setConfig('ssl_verify_peer', false);
 
 $client = SimpleCAS::client($protocol);
+$client->handleSingleLogOut();
 $client->forceAuthentication();
 
 if (isset($_GET['logout'])) {
