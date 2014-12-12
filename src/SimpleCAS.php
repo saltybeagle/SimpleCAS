@@ -57,6 +57,13 @@ class SimpleCAS
     private $_authenticated = false;
 
     /**
+     * Should a redirect be done after ticket validation?
+     *
+     * @var bool
+     */
+    protected $validateRedirect = true;
+
+    /**
      * Protocol for the server running the CAS service.
      *
      * @var SimpleCAS_Protocol
@@ -210,7 +217,11 @@ class SimpleCAS
         }
 
         if (!is_null($name)) {
-            return $_SESSION[$this->_sessionNamespace][$name];
+            $value = null;
+            if (isset($_SESSION[$this->_sessionNamespace][$name])) {
+                $value = $_SESSION[$this->_sessionNamespace][$name];
+            }
+            return $value;
         }
 
         return $_SESSION[$this->_sessionNamespace];
@@ -258,11 +269,31 @@ class SimpleCAS
     /**
      * Set the ticket to be checked for authentication
      *
-     * @param unknown_type $ticket
+     * @param string $ticket
      */
     public function setTicket($ticket)
     {
         $this->_ticket = $ticket;
+    }
+    
+    /**
+     * Returns the extra attributes from Version 2 protocol validation
+     *
+     * @return array|null
+     */
+    public function getAttributes()
+    {
+        return $this->_getSession('ATTRIBUTES');
+    }
+
+    /**
+     * Set the flag controlling the after ticket validation redirect
+     *
+     * @param bool $value
+     */
+    public function setValidateRedirect($value)
+    {
+        $this->validateRedirect = (bool)$value;
     }
 
     /**
@@ -279,7 +310,15 @@ class SimpleCAS
     {
         if ($uid = $this->protocol->validateTicket($ticket, self::getURL())) {
             $this->setAuthenticated($uid);
-            $this->redirect(self::getURL());
+            
+            if ($this->protocol instanceof SimpleCAS_Protocol_Version2) {
+                $session =& $this->_getSession();
+                $session['ATTRIBUTES'] = $this->protocol->getAttributes();
+            }
+
+            if ($this->validateRedirect) {
+                $this->redirect(self::getURL());
+            }
             return true;
         } else {
             return false;
