@@ -117,9 +117,9 @@ abstract class SimpleCAS_Protocol
     /**
      * Set the session map.  The session map is used for single log out.
      * 
-     * @param $sessionMap
+     * @param SimpleCAS_SLOMapInterface $sessionMap
      */
-    function setSessionMap($sessionMap)
+    function setSessionMap(SimpleCAS_SLOMapInterface $sessionMap)
     {
         $this->sessionMap = $sessionMap;
     }
