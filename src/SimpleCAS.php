@@ -84,8 +84,6 @@ class SimpleCAS
      */
     protected $_sessionNamespace = '__SIMPLECAS';
 
-    protected $sessionMap;
-
     /**
      * Singleton interface, returns SimpleCAS object.
      *
