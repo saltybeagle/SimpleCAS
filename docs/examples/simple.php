@@ -1,8 +1,6 @@
 <?php
 ini_set('display_errors', true);
-set_include_path(dirname(dirname(__DIR__)).'/src'.PATH_SEPARATOR.dirname(dirname(__DIR__)).'/vendor/php');
-require_once 'SimpleCAS/Autoload.php';
-require_once 'HTTP/Request2.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $options = array('hostname' =>'login.unl.edu',
                  'port'     => 443,

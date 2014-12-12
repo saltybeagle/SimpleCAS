@@ -13,65 +13,20 @@
  */
 class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
 {
-    protected $data          = array();
-    protected $file_name     = false;
-    protected $tmp_directory = false;
+    protected $pool = false;
     
-    public function __construct($file_name = false, $tmp_directory = false)
+    public function __construct($cache_driver = NULL)
     {
-        if (!$tmp_directory) {
-            $this->tmp_directory = sys_get_temp_dir();
-        }
-        if (!$file_name) {
-            $this->file_name     = 'simpleCAS_map_' . md5(SimpleCas::getURL())  . '.php.ser';
-        }
-    }
-
-    /**
-     * Get the tmp directory path
-     * 
-     * @return bool|string
-     */
-    protected function getTmpDirectory()
-    {
-        return $this->tmp_directory;
-    }
-
-    /**
-     * Get the session map file name's path
-     * 
-     * @return string
-     */
-    protected function getMapFilePath()
-    {
-        return $this->getTmpDirectory() . '/' . $this->file_name;
-    }
-
-    /**
-     * Load the map file
-     * 
-     * @return bool
-     */
-    protected function loadMapFile()
-    {
-        if (file_exists($this->getMapFilePath())) {
-            $data = file_get_contents($this->getMapFilePath());
-            $this->data = unserialize($data);
-            
-            return true;
+        if (!$cache_driver) {
+            // Create Driver with default options
+            $cache_driver = new \Stash\Driver\FileSystem();
+            $cache_driver->setOptions(array(
+                'path' => sys_get_temp_dir() . '/simpleCAS_map_' . md5(SimpleCas::getURL())
+            ));
         }
         
-        return false;
-    }
-
-    /**
-     * Save the map file
-     * 
-     * @return int
-     */
-    protected function saveMapFile()
-    {
-        return file_put_contents($this->getMapFilePath(), serialize($this->data));
+        // Inject the driver into a new Pool object.
+        $this->pool = new \Stash\Pool($cache_driver);
     }
 
     /**
@@ -82,13 +37,13 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
      */
     public function get($cas_ticket)
     {
-        $this->loadMapFile();
-        
-        if (isset($this->data[$cas_ticket])) {
-            return $this->data[$cas_ticket];
-        }
+        $item = $this->pool->getItem($cas_ticket);
 
-        return false;
+        if ($item->isMiss()) {
+            return false;
+        }
+        
+        return $item->get();
     }
 
     /**
@@ -100,11 +55,8 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
      */
     public function set($cas_ticket, $session_id)
     {
-        $this->loadMapFile();
-        $this->data[$cas_ticket] = $session_id;
-        $this->saveMapFile();
-
-        return true;
+        $item = $this->pool->getItem($cas_ticket);
+        return $item->set($session_id);
     }
 
     /**
@@ -115,14 +67,12 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
      */
     public function remove($cas_ticket)
     {
-        $this->loadMapFile();
+        $item = $this->pool->getItem($cas_ticket);
         
-        if (!isset($this->data[$cas_ticket])) {
-            return;
+        if ($item->isMiss()) {
+            return false;
         }
         
-        unset($this->data[$cas_ticket]);
-        
-        $this->saveMapFile();
+        return $item->clear();
     }
 }
