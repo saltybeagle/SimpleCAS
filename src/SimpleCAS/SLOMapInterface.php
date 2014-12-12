@@ -80,7 +80,7 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      * @param string $cas_ticket
      * @return string mixed
      */
-    abstract protected function get($cas_ticket);
+    abstract public function get($cas_ticket);
 
     /**
      * Save a mapping between a cas ticket and session id
@@ -89,7 +89,7 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      * @param $session_id
      * @return mixed
      */
-    abstract protected function set($cas_ticket, $session_id);
+    abstract public function set($cas_ticket, $session_id);
 
     /**
      * Remove a CAS ticket
@@ -97,5 +97,5 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      * @param $cas_ticket
      * @return mixed
      */
-    abstract protected function remove($cas_ticket);
+    abstract public function remove($cas_ticket);
 }
