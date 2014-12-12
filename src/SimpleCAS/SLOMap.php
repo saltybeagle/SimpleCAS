@@ -106,4 +106,23 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
 
         return true;
     }
+
+    /**
+     * Remove a CAS ticket from the registry
+     * 
+     * @param $cas_ticket
+     * @return mixed|void
+     */
+    public function remove($cas_ticket)
+    {
+        $this->loadMapFile();
+        
+        if (!isset($this->data[$cas_ticket])) {
+            return;
+        }
+        
+        unset($this->data[$cas_ticket]);
+        
+        $this->saveMapFile();
+    }
 }

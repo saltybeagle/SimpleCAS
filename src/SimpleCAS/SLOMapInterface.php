@@ -90,4 +90,12 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      * @return mixed
      */
     abstract protected function set($cas_ticket, $session_id);
+
+    /**
+     * Remove a CAS ticket
+     * 
+     * @param $cas_ticket
+     * @return mixed
+     */
+    abstract protected function remove($cas_ticket);
 }
