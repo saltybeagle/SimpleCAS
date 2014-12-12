@@ -22,7 +22,7 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      */
     public function validateLogoutRequest($post)
     {
-        if (isset($_POST['logoutRequest']) && ($ticket = $this->getTicket($_POST['logoutRequest']))) {
+        if (isset($_POST['logoutRequest']) && ($ticket = $this->parseLogoutRequest($_POST['logoutRequest']))) {
             return $ticket;
         }
 
@@ -62,7 +62,7 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
      * @param $xml - the XML from the single sign out request
      * @return bool|string - the CAS ticket to sign out, false if no ticket was found.
      */
-    protected function getTicket($xml)
+    protected function parseLogoutRequest($xml)
     {
         $xml = new \SimpleXMLElement($xml);
         $element = $xml->xpath('//samlp:SessionIndex');
