@@ -127,7 +127,7 @@ abstract class SimpleCAS_Protocol
     /**
      * Get the sessions map.  If one is not set yet, it will return the default SimpleCAS_SLOMap
      * 
-     * @return mixed
+     * @return SimpleCAS_SLOMapInterface
      */
     function getSessionMap()
     {
