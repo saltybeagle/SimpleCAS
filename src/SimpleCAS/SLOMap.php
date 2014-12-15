@@ -21,7 +21,7 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
             // Create Driver with default options
             $cache_driver = new \Stash\Driver\FileSystem();
             $cache_driver->setOptions(array(
-                'path' => sys_get_temp_dir() . '/simpleCAS_map_' . md5(SimpleCas::getURL())
+                'path' => sys_get_temp_dir() . '/simpleCAS_map_' . md5(SimpleCAS::getURL())
             ));
         }
         
