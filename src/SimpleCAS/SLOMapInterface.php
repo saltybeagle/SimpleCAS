@@ -51,9 +51,7 @@ abstract class SimpleCAS_SLOMapInterface implements SimpleCAS_SingleSignOut
         session_start();
         $result = session_destroy();
 
-        $this->loadMapFile();
-        unset($this->data[$cas_ticket]);
-        $this->saveMapFile();
+        $this->remove($cas_ticket);
 
         return $result;
     }
