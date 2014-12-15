@@ -195,11 +195,18 @@ class SimpleCAS
             $this->setTicket($_GET['ticket']);
         }
     }
-    
+
+    /**
+     * Handle any potential Single Log Out requests.
+     */
     public function handleSingleLogOut()
     {
-        if ($slo_ticket = $this->protocol->getSessionMap()->validateLogoutRequest($_POST)) {
-            $this->protocol->getSessionMap()->logout($slo_ticket);
+        if (!$session_map = $this->protocol->getSessionMap()) {
+            return;
+        }
+        
+        if ($slo_ticket = $session_map->validateLogoutRequest($_POST)) {
+            $session_map->logout($slo_ticket);
             exit();
         }
     }
@@ -341,7 +348,10 @@ class SimpleCAS
             $session['FROM_RENEW'] = true;
         }
         $this->_authenticated = true;
-        $this->protocol->getSessionMap()->set($this->getTicket(), session_id());
+        
+        if ($session_map = $this->protocol->getSessionMap()) {
+            $session_map->set($this->getTicket(), session_id());
+        }
     }
 
     /**
