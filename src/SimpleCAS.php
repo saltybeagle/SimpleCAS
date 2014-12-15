@@ -191,15 +191,23 @@ class SimpleCAS
     {
         $this->protocol = $protocol;
 
-        if ($this->protocol instanceof SimpleCAS_SingleSignOut
-            && !empty($_POST)) {
-            if ($ticket = $this->protocol->validateLogoutRequest($_POST)) {
-                $this->logout($ticket);
-            }
-        }
-
         if (isset($_GET['ticket'])) {
             $this->setTicket($_GET['ticket']);
+        }
+    }
+
+    /**
+     * Handle any potential Single Log Out requests.
+     */
+    public function handleSingleLogOut()
+    {
+        if (!$session_map = $this->protocol->getSessionMap()) {
+            return;
+        }
+        
+        if ($slo_ticket = $session_map->validateLogoutRequest($_POST)) {
+            $session_map->logout($slo_ticket);
+            exit();
         }
     }
 
@@ -253,7 +261,16 @@ class SimpleCAS
      */
     public function getTicket()
     {
-        return $this->_ticket;
+        if (!empty($this->_ticket)) {
+            return $this->_ticket;
+        }
+
+        $ticket = $this->_getSession('TICKET');
+        if (!is_array($ticket)) {
+            return $ticket;
+        }
+        
+        return null;
     }
 
     /**
@@ -325,12 +342,16 @@ class SimpleCAS
     protected function setAuthenticated($uid)
     {
         $session =& $this->_getSession();
-        $session['TICKET'] = true;
+        $session['TICKET'] = $this->getTicket();
         $session['UID']    = $uid;
         if (isset($this->protocol->renew)) {
             $session['FROM_RENEW'] = true;
         }
         $this->_authenticated = true;
+        
+        if ($session_map = $this->protocol->getSessionMap()) {
+            $session_map->set($this->getTicket(), session_id());
+        }
     }
 
     /**
