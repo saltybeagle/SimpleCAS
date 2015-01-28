@@ -42,7 +42,11 @@ class SimpleCAS_SLOMap extends SimpleCAS_SLOMapInterface
 
         if (empty($cookie_params['domain'])) {
             //By default, the domain will be empty, so if it is empty, lets use the current server_name.
-            $cookie_params['domain'] = $_SERVER['SERVER_NAME'];
+            if (isset($_SERVER['SERVER_NAME'])) {
+                $cookie_params['domain'] = $_SERVER['SERVER_NAME'];
+            } else {
+                $cookie_params['domain'] = 'cli';
+            }
         }
         return $cookie_params['domain'] . '-' . $cookie_params['path'];
     }
