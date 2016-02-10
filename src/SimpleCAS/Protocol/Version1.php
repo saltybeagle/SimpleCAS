@@ -55,16 +55,16 @@ class SimpleCAS_Protocol_Version1 extends SimpleCAS_Protocol
             $url .= ":{$this->port}";
         }
 
-		/**
-		* For the case where the CAS server has no URI (service URL is cas.example.edu as opposed
-		* to the cas.example.edu/cas convention), simply add the trailing slash and endpoint to the
-		* service URL.
-		*/
-		if (empty($this->uri)) {
-			$url .= "/{$endpoint}";
-		} else {
-			$url .= "/{$this->uri}/{$endpoint}";
-		}
+        /**
+        * For the case where the CAS server has no URI (service URL is cas.example.edu as opposed
+        * to the cas.example.edu/cas convention), simply add the trailing slash and endpoint to the
+        * service URL.
+        */
+        if (empty($this->uri)) {
+            $url .= "/{$endpoint}";
+        } else {
+            $url .= "/{$this->uri}/{$endpoint}";
+        }
 
         if ($querystring) {
             if (is_array($querystring)) {
