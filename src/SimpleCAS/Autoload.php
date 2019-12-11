@@ -31,19 +31,15 @@ function SimpleCAS_Autoload($class)
 }
 
 // set up __autoload
-if (function_exists('spl_autoload_register')) {
-    if (!($_____t = spl_autoload_functions()) || !in_array('SimpleCAS_Autoload', spl_autoload_functions())) {
-        spl_autoload_register('SimpleCAS_Autoload');
-        if (function_exists('__autoload') && ($_____t === false)) {
-            // __autoload() was being used, but now would be ignored, add
-            // it to the autoload stack
-            spl_autoload_register('__autoload');
-        }
+if (!($_____t = spl_autoload_functions()) || !in_array('SimpleCAS_Autoload', spl_autoload_functions())) {
+    spl_autoload_register('SimpleCAS_Autoload');
+    if (function_exists('__autoload') && ($_____t === false)) {
+        // __autoload() was being used, but now would be ignored, add
+        // it to the autoload stack
+        spl_autoload_register('__autoload');
     }
-    unset($_____t);
-} elseif (!function_exists('__autoload')) {
-    function __autoload($class) { return SimpleCAS_Autoload($class); }
 }
+unset($_____t);
 
 // set up include_path if it doesn't register our current location
 $____paths = explode(PATH_SEPARATOR, get_include_path());
